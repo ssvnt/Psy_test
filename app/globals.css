@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f7faff;
+  --fg: #0b1b3a;
+  --muted: #4b5563;
+  --accent: #b7ff1a;
+}
+
+[data-theme='inverted'] {
+  --bg: #0b1b3a;
+  --fg: #f7faff;
+  --muted: #d1d5db;
+  --accent: #b7ff1a;
+}
+
+body { background: var(--bg); color: var(--fg); font-family: Inter, system-ui, sans-serif; }
+.container-x { @apply max-w-5xl mx-auto px-4; }
+.card { @apply rounded-2xl border border-slate-200 p-5 bg-white/80; }
+.btn { @apply rounded-xl px-4 py-2 font-medium; }
+.btn-primary { @apply btn bg-navy text-white; }
+.btn-accent { @apply btn bg-lime text-navy; }

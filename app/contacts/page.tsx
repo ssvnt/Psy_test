@@ -1,0 +1,1 @@
+export default function Contacts(){return <main className='container-x py-10'><h1 className='text-2xl font-semibold'>Контакты</h1><p className='mt-3'>Записаться к Валентине (педагог‑психолог) — заглушка: consult@example.com</p></main>}
