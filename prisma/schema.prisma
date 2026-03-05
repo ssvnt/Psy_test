@@ -1,0 +1,95 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql" url = env("DATABASE_URL") }
+
+model User {
+  id String @id @default(cuid())
+  name String
+  email String @unique
+  phone String?
+  city String?
+  marketingConsent Boolean @default(false)
+  createdAt DateTime @default(now())
+  children Child[]
+  orders Order[]
+  sessions TestSession[]
+}
+
+model Child {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId], references:[id])
+  name String?
+  age Int
+  grade String?
+  gender String?
+  sessions TestSession[]
+}
+
+model Order {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId], references:[id])
+  amount Int
+  currency String @default("RUB")
+  status String @default("pending")
+  provider String
+  providerPaymentId String?
+  createdAt DateTime @default(now())
+  paidAt DateTime?
+}
+
+model TestSession {
+  id String @id @default(cuid())
+  userId String
+  childId String?
+  user User @relation(fields:[userId], references:[id])
+  child Child? @relation(fields:[childId], references:[id])
+  token String @unique
+  expiresAt DateTime
+  status String @default("active")
+  startedAt DateTime?
+  completedAt DateTime?
+  answers Answer[]
+  result Result?
+}
+
+model Question {
+  id String @id @default(cuid())
+  externalId String?
+  text String
+  orderIndex Int
+  answerType String
+  options Json
+  mappingKey String?
+  answers Answer[]
+}
+
+model Answer {
+  id String @id @default(cuid())
+  sessionId String
+  questionId String
+  value String
+  createdAt DateTime @default(now())
+  session TestSession @relation(fields:[sessionId], references:[id])
+  question Question @relation(fields:[questionId], references:[id])
+  @@unique([sessionId, questionId])
+}
+
+model Result {
+  id String @id @default(cuid())
+  sessionId String @unique
+  session TestSession @relation(fields:[sessionId], references:[id])
+  primaryIntelligence String
+  secondaryIntelligence String
+  scoresJson Json
+  emailedAt DateTime?
+  status String @default("pending")
+}
+
+model WebhookLog {
+  id String @id @default(cuid())
+  provider String
+  event String
+  payload Json
+  createdAt DateTime @default(now())
+}
