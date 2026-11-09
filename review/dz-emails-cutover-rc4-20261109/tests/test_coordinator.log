@@ -1,0 +1,41 @@
+PASS gardner completed scheduled
+PASS gardner completion idempotent
+PASS gardner 12h event scheduled
+PASS gardner completion sent
+PASS gardner no early 12h
+PASS gardner pending order stops follow-up
+PASS gardner no marketing double send
+PASS gardner paid receipt scheduled
+PASS gardner paid receipt sent without marketing consent
+PASS gardner no unverified 24h promise
+PASS gardner ready scheduled
+PASS gardner ready sent
+PASS gardner two ready CTAs
+PASS gardner ready dedupe
+PASS gardner another completion
+PASS gardner revoke consent before send
+PASS gardner SMTP unknown fixture queued
+PASS gardner SMTP unknown held
+PASS gardner no blind SMTP retry
+PASS gardner flags default off
+PASS teen completed scheduled
+PASS teen completion idempotent
+PASS teen 12h event scheduled
+PASS teen completion sent
+PASS teen no early 12h
+PASS teen pending order stops follow-up
+PASS teen no marketing double send
+PASS teen paid receipt scheduled
+PASS teen paid receipt sent without marketing consent
+PASS teen no unverified 24h promise
+PASS teen ready scheduled
+PASS teen ready sent
+PASS teen two ready CTAs
+PASS teen ready dedupe
+PASS teen another completion
+PASS teen revoke consent before send
+PASS teen SMTP unknown fixture queued
+PASS teen SMTP unknown held
+PASS teen no blind SMTP retry
+PASS teen flags default off
+RC4_COORDINATOR_TESTS_PASS NO_EXTERNAL_SENDS NO_PAYMENT_CALLS
