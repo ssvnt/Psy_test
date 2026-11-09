@@ -1,0 +1,67 @@
+PASS gardner completed scheduled
+PASS gardner completion idempotent
+PASS gardner 12h event scheduled
+PASS gardner completion sent
+PASS gardner no early 12h
+PASS gardner pending order stops follow-up
+PASS gardner no marketing double send
+PASS gardner paid receipt scheduled
+PASS gardner paid receipt sent without marketing consent
+PASS gardner no unverified 24h promise
+PASS gardner ready scheduled
+PASS gardner ready sent
+PASS gardner two ready CTAs
+PASS gardner ready dedupe
+PASS gardner another completion
+PASS gardner revoke consent before send
+PASS gardner SMTP unknown fixture queued
+PASS gardner SMTP unknown held
+PASS gardner no blind SMTP retry
+PASS gardner flags default off
+PASS teen completed scheduled
+PASS teen completion idempotent
+PASS teen 12h event scheduled
+PASS teen completion sent
+PASS teen no early 12h
+PASS teen pending order stops follow-up
+PASS teen no marketing double send
+PASS teen paid receipt scheduled
+PASS teen paid receipt sent without marketing consent
+PASS teen no unverified 24h promise
+PASS teen ready scheduled
+PASS teen ready sent
+PASS teen two ready CTAs
+PASS teen ready dedupe
+PASS teen another completion
+PASS teen revoke consent before send
+PASS teen SMTP unknown fixture queued
+PASS teen SMTP unknown held
+PASS teen no blind SMTP retry
+PASS teen flags default off
+RC4_COORDINATOR_TESTS_PASS NO_EXTERNAL_SENDS NO_PAYMENT_CALLS
+PASS gardner_old_first_suppressed
+PASS gardner_followup_scheduled
+PASS gardner_late_legacy_wins
+PASS gardner_24h_receipt_scheduled
+PASS gardner_24h_receipt_accepted
+PASS gardner_24h_only_with_approval
+PASS gardner_report_queued
+PASS gardner_review_loss_hold
+PASS gardner_bad_pdf_not_delivered
+PASS gardner_unsafe_link_hold
+PASS gardner_unsafe_link_not_sent
+PASS teen_old_first_suppressed
+PASS teen_followup_scheduled
+PASS teen_late_legacy_wins
+PASS teen_24h_receipt_scheduled
+PASS teen_24h_receipt_accepted
+PASS teen_24h_only_with_approval
+PASS teen_report_queued
+PASS teen_review_loss_hold
+PASS teen_bad_pdf_not_delivered
+PASS teen_unsafe_link_hold
+PASS teen_unsafe_link_not_sent
+PASS unsubscribe_html_clickable_and_escaped
+PASS html_safe
+RC4_HARD_CASES_PASS\nRC4_SOURCE_CONTRACT_PASS
+RC4_OFFLINE_INTEGRATION_CONTRACT_PASS NO_LIVE_MAIL NO_BANK NO_MODEL

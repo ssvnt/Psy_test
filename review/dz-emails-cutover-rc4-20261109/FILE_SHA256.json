@@ -1,0 +1,186 @@
+{
+  "schema": "dz-rc4-mail-cutover-review-v1",
+  "status": "REVIEW_ONLY_NO_PRODUCTION",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6666,
+      "sha256": "f25f4b6c84c694251572ebc76d89ac90539395cd5923da5881ae21fba6965154"
+    },
+    {
+      "path": "docs/DEVELOPER_CUTOVER_AND_TEST_PLAN.md",
+      "bytes": 9470,
+      "sha256": "b0006a5058bf71317f940504a5227e0df8558706851a92a25764fe958e6ec206"
+    },
+    {
+      "path": "docs/RELEASE_DECISION.md",
+      "bytes": 1564,
+      "sha256": "e2085c59b785e29b451e79d09325c59d1f6408da60cad8d909d28302936ca0c7"
+    },
+    {
+      "path": "docs/SOURCE_COPY_PROVENANCE.md",
+      "bytes": 2537,
+      "sha256": "126bcb2dd8d4123fa667a85ea26d14895970f9d95a010d11d0d9bc17ba32c08c"
+    },
+    {
+      "path": "laravel/app/Console/Commands/DzMailJourneyDrain.php",
+      "bytes": 1413,
+      "sha256": "1222f9d8d2e889d6e3a91bffacc10814942b8e58c786759907a3bde98ecf0363"
+    },
+    {
+      "path": "laravel/app/Http/Controllers/DzMailUnsubscribeController.php",
+      "bytes": 2511,
+      "sha256": "aa9c6cf9016b2fbbfc82f4010e0ef2afddf0ea9b706338177c446827edd70ad4"
+    },
+    {
+      "path": "laravel/app/Mail/DzJourneyMail.php",
+      "bytes": 734,
+      "sha256": "a72ad16fc3c485071364b311ff57a0fa5910540fbb8ef8e815038631cb8c5e19"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/Core/JourneyContextProvider.php",
+      "bytes": 185,
+      "sha256": "781284f739101f02420baf0bc08002f6cedb31a74ca46513b4b172390b07160e"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/Core/JourneyEventStore.php",
+      "bytes": 290,
+      "sha256": "cf592c1f743b8f9436d13fcaf4e3b5d8005de9f35d1e7cc45b5827effaa4a762"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/Core/JourneyMailer.php",
+      "bytes": 188,
+      "sha256": "89dcd2a2cdf955c6caee6522b61dcca6e6032dcd171a1ad2d0083ed62171feaa"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/Core/MailJourneyCoordinator.php",
+      "bytes": 6960,
+      "sha256": "01cda66179b9ea238596b5d71d88d5f9252a2abf38f48a152014f3339167b756"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/Core/MailJourneyPolicy.php",
+      "bytes": 5310,
+      "sha256": "6c4128ca0f1f0f4b19f5e3bce8c96a227550d5e67b9fdc0bd0bffec76b2055df"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/Core/MailPreviewRenderer.php",
+      "bytes": 3933,
+      "sha256": "8471d2d49656430d9503d11ab1f795cae853691c84bcec068f09f7f0942e8cc8"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/LaravelJourneyContextProvider.php",
+      "bytes": 10667,
+      "sha256": "69ca3da8daa50bba2c391e4c34c852d78abc9f5f50f7f54431e98fc5590a065c"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/LaravelJourneyCoordinatorFactory.php",
+      "bytes": 1622,
+      "sha256": "c4ce3ee98f0dcb9e434de59fde10e5d2f51c8b128682d09507bd360d0191f42c"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/LaravelJourneyEventStore.php",
+      "bytes": 3556,
+      "sha256": "09412c19bebdf614db9b1d0157078ffb653a240ae34df631d68c32785959e1b7"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/LaravelJourneyHooks.php",
+      "bytes": 6065,
+      "sha256": "cf927cc41bea138f945ed8c66acc6816aa5f552f2198480e40a8460768db9aa0"
+    },
+    {
+      "path": "laravel/app/Services/MailJourneys/LaravelJourneyMailer.php",
+      "bytes": 1014,
+      "sha256": "2166a7025f661812053fc8030776dfff8804989d3c7b962d7e3dd7feb2069cdc"
+    },
+    {
+      "path": "laravel/config/dz_mail_journeys.php",
+      "bytes": 1174,
+      "sha256": "bdb0323525c61c79d35540aa3635af55703745d9fdd10cf07e6dfd20ab45bf8a"
+    },
+    {
+      "path": "laravel/database/migrations/2026_11_09_000001_create_dz_mail_journey_events.php",
+      "bytes": 1195,
+      "sha256": "edd722a0ae140a04d6a27b4c2da76d7d69361c6b97a3013c320fef7c21fbfb84"
+    },
+    {
+      "path": "laravel/database/migrations/2026_11_09_000002_create_dz_mail_marketing_consents.php",
+      "bytes": 998,
+      "sha256": "9d2b7332a1a4bb4e3c4679c087c494cf0d11cb53bdf93292c51b33409a98bc54"
+    },
+    {
+      "path": "laravel/database/migrations/2026_11_09_000003_create_dz_mail_verified_facts.php",
+      "bytes": 1477,
+      "sha256": "a5faa3323f1035cb5f411ac19dbc74f11995a17074463b458ccc49c9fdc5060b"
+    },
+    {
+      "path": "laravel/resources/mail-journeys/copy-v1.proposed.json",
+      "bytes": 12974,
+      "sha256": "fa393a09a5ffb1303ce48ae7325ead1cf73f523550f136c605aa5fffb985a0b4"
+    },
+    {
+      "path": "laravel/resources/views/emails/dz-journey-html.blade.php",
+      "bytes": 106,
+      "sha256": "e2f9211d779f6c994b044087b46f3d3c45c14cf443dc5e9d6a4d130208c557d0"
+    },
+    {
+      "path": "laravel/resources/views/emails/dz-journey-plaintext.blade.php",
+      "bytes": 12,
+      "sha256": "e55e49d58eccc1f262b7a5697768bce0d69c8649f97876924ce0981a682e6315"
+    },
+    {
+      "path": "laravel/routes/mail-journeys-review-only.php",
+      "bytes": 546,
+      "sha256": "72e0874170a3d70db2b58b4fd60ff1a74e558a4d6dfa6f49a1dc8591ab7336a9"
+    },
+    {
+      "path": "src/InMemoryJourneyStore.php",
+      "bytes": 1554,
+      "sha256": "e9295bcb1254d55aad94a0221bacfd7a30fe9667bdc674002c7dca8ff0212757"
+    },
+    {
+      "path": "src/MailJourneyCoordinator.php",
+      "bytes": 6948,
+      "sha256": "ee4ae6ff1015ed6aafab0cd3cb29174525adb18b2744f4a134f8e88a1a946d43"
+    },
+    {
+      "path": "src/MailJourneyPolicy.php",
+      "bytes": 5298,
+      "sha256": "ae889a56a9aee5e5320ea6ae7010f367e243c9c974dd5914e7e150ffdcad440c"
+    },
+    {
+      "path": "src/MailPreviewRenderer.php",
+      "bytes": 3921,
+      "sha256": "af134655aaf609308f1c623dab82f374ca518527da49c1f453e723fc6c8c1e49"
+    },
+    {
+      "path": "tests/TEST_RUN.txt",
+      "bytes": 2224,
+      "sha256": "e82335b209084afb9b13285efab289e209a07d7be1602b268cf64205a88ad0f6"
+    },
+    {
+      "path": "tests/run.sh",
+      "bytes": 378,
+      "sha256": "b84ca3a163bb66828f30427ac4cbb37c76e4989bc3149d6dd3b3937508e1db08"
+    },
+    {
+      "path": "tests/test_coordinator.log",
+      "bytes": 1370,
+      "sha256": "962cbc7676128e77dee4274a8d904d2fb0fb9563292aab8321002104e1bdfe34"
+    },
+    {
+      "path": "tests/test_coordinator.php",
+      "bytes": 5863,
+      "sha256": "80d76d57932d53176856a0228e3a2628f28eb7890ed00e96a7f8f6ae0c5e287c"
+    },
+    {
+      "path": "tests/test_hard_cases.php",
+      "bytes": 4689,
+      "sha256": "e39a687d4c88bd04f2cc1ce703d03d97511827f06aa56900af42aa074a11370d"
+    },
+    {
+      "path": "tests/test_source_contract.py",
+      "bytes": 1999,
+      "sha256": "b6c11288a5c4dc2e0459373b24bc1486af216dfd0bb630cd5f79e6ddc43e97c1"
+    }
+  ]
+}
