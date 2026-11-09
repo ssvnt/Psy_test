@@ -1,1 +1,0 @@
-export default function Policy(){return <main className='container-x py-10'><h1 className='text-2xl font-semibold'>Политика обработки персональных данных</h1><p className='mt-3'>Мы обрабатываем минимально необходимые данные для оказания услуги тестирования в соответствии с 152‑ФЗ.</p></main>}

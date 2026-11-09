@@ -1,44 +1,33 @@
-# ТМИГ — сайт для родителей школьников
+# «Добрый Жук» — актуальные материалы разработки
 
-Полноценный проект: Next.js + Prisma + PostgreSQL + email + платежный адаптер.
+**GitHub main обновлён 9 ноября 2026 года.** Старый неработающий Next.js удалён из дерева текущей ветки и сохранён в `archive/main-nextjs-before-laravel-20261109`.
 
-## Важно про вопросы теста
-Вопросы загружаются из источника:
-- https://psytests.org/typo/tmig-bl.html
-- https://psytests.org/typo/tmig-run.html
+> **Внимание: здесь пока не полный исполняемый Laravel/Vue-сайт. Не деплоить `main` на production!** В `main` находятся проверочные пакеты RC1–RC4, исходники механизмов исправления, тесты и аудит. Полное зеркало исходников работающего сайта ещё не импортировано.
 
-Скрипт `scripts/import-questions.ts` пытается скачать HTML, распарсить и сохранить `scripts/questions-cache.json`. Если загрузка невозможна, используется локальный fallback seed.
+## Как устроен репозиторий
 
-## Запуск
-```bash
-docker compose up
-```
-Или локально:
-```bash
-npm install
-cp .env.example .env
-npx prisma migrate dev
-npm run import:questions
-npm run db:seed
-npm run dev
-```
+- [`review/gardner-rc1-20261109/`](review/gardner-rc1-20261109/) — исправления воронки, 13 изменений существующих файлов + четыре новых компонента, staging-only.
+- [`review/gardner-rc2-20261109/`](review/gardner-rc2-20261109/) — неблокирующий языковой QA и классификация остановок; автономный прототип, не установленный в Laravel.
+- [`review/dz-emails-rc3-20261109/`](review/dz-emails-rc3-20261109/) — проект новых писем двум категориям покупателей.
+- [`review/dz-emails-cutover-rc4-20261109/`](review/dz-emails-cutover-rc4-20261109/) — изолированный Laravel-код нового почтового outbox и план переключения; **старые отправители пока не заменены на сайте**.
+- [`docs/incidents/`](docs/incidents/) — аудит продакшен-инцидентов и регрессионные матрицы.
+- [`MIGRATION_TO_LARAVEL_SOURCE.md`](MIGRATION_TO_LARAVEL_SOURCE.md) — точный план ввода реального исходного кода сайта и проверки безопасности.
 
-## Маршруты
-- `/` лендинг
-- `/checkout` регистрация и оплата
-- `/test/[token]` тест
-- `/admin` админка
-- `/policy`, `/offer`, `/contacts`
+## Фактические границы
 
-## API
-- `POST /api/checkout/start`
-- `POST /api/webhooks/yookassa`
-- `GET /api/test/session?token=...`
-- `POST /api/test/answer`
-- `POST /api/test/finish`
-- `POST /api/admin/send-result`
+**Production**: действующее приложение Laravel/Vue расположено на сервере `/var/www/bribon`, дополнительные генераторы — в `/opt/dz-gardner-r27-live`, `/opt/dz-r27-universal`, `/opt/dz-r27-recovery`. Эти файлы **не находятся здесь в полном объёме**.
 
-## Тесты
-```bash
-npm test
-```
+**Снимок исходников** от 2026-11-08T22:50:27Z: 1 730 файлов сайта и 70 файлов оркестраторов; архивы и контрольные суммы приведены в документе миграции. Снимок исключает приватное хранилище, `.env`, базы данных и логи, но исходный код содержит исторические идентификаторы оплаченных операций, требующие отдельного безопасного удаления **без утраты прав клиентов**.
+
+**Выполнено**: структурные, синтетические и офлайн-тесты пакетов RC1–RC4. **Не выполнено**: совместная Laravel/PHPUnit + Vite сборка из полного source mirror, безопасное слияние изменений в текущую серверную ревизию, end-to-end тест двух тестов и реальная приёмка почты/генератора.
+
+## Правила
+
+1. Нельзя публиковать клиентские данные, платёжные operationId, `.env`, пароли, журналы или полный текст детских отчётов.
+2. Нельзя принимать `review/` за готовый код сайта, запускать оттуда `migrate`, SMTP, DeepSeek или почтовые рассылки.
+3. Не отключать QA-критические проверки, не переписывать оплаченные ответы и ledger, не повторять billable неизвестные запросы.
+4. Для выпуска требуется полная Laravel-копия, обновлённый секрет-скан, согласованные RC1–RC4, isolated DB и пройденные acceptance-тесты.
+
+**Архив прежнего main:** [archive/main-nextjs-before-laravel-20261109](https://github.com/ssvnt/Psy_test/tree/archive/main-nextjs-before-laravel-20261109).
+
+**Итоговый статус:** CURRENT-ENGINEERING-MATERIALS / LARAVEL-SOURCE-IMPORT-PENDING / PRODUCTION NO-GO.
