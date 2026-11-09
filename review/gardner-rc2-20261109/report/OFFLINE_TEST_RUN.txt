@@ -1,0 +1,89 @@
+test_active_lease_prevents_double_worker (test_classifier.ClassifierTests.test_active_lease_prevents_double_worker) ... ok
+test_budget_is_hard (test_classifier.ClassifierTests.test_budget_is_hard) ... ok
+test_config_error_owner (test_classifier.ClassifierTests.test_config_error_owner) ... ok
+test_content_schema_addressable (test_classifier.ClassifierTests.test_content_schema_addressable) ... ok
+test_http_429_limit (test_classifier.ClassifierTests.test_http_429_limit) ... ok
+test_http_429_not_assumed_free (test_classifier.ClassifierTests.test_http_429_not_assumed_free) ... ok
+test_http_429_verified_no_charge (test_classifier.ClassifierTests.test_http_429_verified_no_charge) ... ok
+test_integrity_never_retry_billed (test_classifier.ClassifierTests.test_integrity_never_retry_billed) ... ok
+test_lease_unambiguous (test_classifier.ClassifierTests.test_lease_unambiguous) ... ok
+test_lease_unknown (test_classifier.ClassifierTests.test_lease_unknown) ... ok
+test_local_fail_can_restart_only_local (test_classifier.ClassifierTests.test_local_fail_can_restart_only_local) ... ok
+test_no_charges_from_any_decision (test_classifier.ClassifierTests.test_no_charges_from_any_decision) ... ok
+test_proven_response_replayed_without_network (test_classifier.ClassifierTests.test_proven_response_replayed_without_network) ... ok
+test_proven_unsent_can_retry (test_classifier.ClassifierTests.test_proven_unsent_can_retry) ... ok
+test_quality_scanner_down_pauses_qa_not_generation (test_classifier.ClassifierTests.test_quality_scanner_down_pauses_qa_not_generation) ... ok
+test_quality_to_repair (test_classifier.ClassifierTests.test_quality_to_repair) ... ok
+test_stream_incomplete_is_unknown (test_classifier.ClassifierTests.test_stream_incomplete_is_unknown) ... ok
+test_timeout_bound (test_classifier.ClassifierTests.test_timeout_bound) ... ok
+test_transport_after_send_is_unknown (test_classifier.ClassifierTests.test_transport_after_send_is_unknown) ... ok
+test_unknown_code_owner_attention (test_classifier.ClassifierTests.test_unknown_code_owner_attention) ... ok
+test_php_and_python_actions_match_synthetic_incidents (test_contract_parity.CrossRuntimeParityTests.test_php_and_python_actions_match_synthetic_incidents) ... ok
+test_48_local_repair_3_editor_handoff (test_persistence_integration.PersistenceIntegrationTests.test_48_local_repair_3_editor_handoff) ... ok
+test_billed_result_cannot_be_marked_free (test_persistence_integration.PersistenceIntegrationTests.test_billed_result_cannot_be_marked_free) ... ok
+test_budget_and_unknown_protected (test_persistence_integration.PersistenceIntegrationTests.test_budget_and_unknown_protected) ... ok
+test_chunk_qa_hash_must_match_accepted_checkpoint (test_persistence_integration.PersistenceIntegrationTests.test_chunk_qa_hash_must_match_accepted_checkpoint) ... ok
+test_concurrent_claim_distinct_tasks (test_persistence_integration.PersistenceIntegrationTests.test_concurrent_claim_distinct_tasks) ... ok
+test_duplicate_qa_ingestion_idempotent (test_persistence_integration.PersistenceIntegrationTests.test_duplicate_qa_ingestion_idempotent) ... ok
+test_event_disallows_private_payloads (test_persistence_integration.PersistenceIntegrationTests.test_event_disallows_private_payloads) ... ok
+test_expired_local_lease_is_not_unlimited (test_persistence_integration.PersistenceIntegrationTests.test_expired_local_lease_is_not_unlimited) ... ok
+test_full_qa_pass_cannot_be_invalidated_by_late_chunk_patch (test_persistence_integration.PersistenceIntegrationTests.test_full_qa_pass_cannot_be_invalidated_by_late_chunk_patch) ... ok
+test_idempotent_reservation (test_persistence_integration.PersistenceIntegrationTests.test_idempotent_reservation) ... ok
+test_immutable_chunk_replay (test_persistence_integration.PersistenceIntegrationTests.test_immutable_chunk_replay) ... ok
+test_immutable_identity (test_persistence_integration.PersistenceIntegrationTests.test_immutable_identity) ... ok
+test_must_collect_before_qa (test_persistence_integration.PersistenceIntegrationTests.test_must_collect_before_qa) ... ok
+test_no_max_auto_resubmit_unknown (test_persistence_integration.PersistenceIntegrationTests.test_no_max_auto_resubmit_unknown) ... ok
+test_no_publish_if_all_qa_tasks_accepted_standalone (test_persistence_integration.PersistenceIntegrationTests.test_no_publish_if_all_qa_tasks_accepted_standalone) ... ok
+test_owner_event_once_and_redacted (test_persistence_integration.PersistenceIntegrationTests.test_owner_event_once_and_redacted) ... ok
+test_per_chunk_qa_does_not_wait_for_remaining_chunks (test_persistence_integration.PersistenceIntegrationTests.test_per_chunk_qa_does_not_wait_for_remaining_chunks) ... ok
+test_qa_fail_queues_tasks_instead_of_failed_order (test_persistence_integration.PersistenceIntegrationTests.test_qa_fail_queues_tasks_instead_of_failed_order) ... ok
+test_reconciled_no_charge_requires_proof_hash (test_persistence_integration.PersistenceIntegrationTests.test_reconciled_no_charge_requires_proof_hash) ... ok
+test_repeat_chunk_qa_does_not_enqueue_twice (test_persistence_integration.PersistenceIntegrationTests.test_repeat_chunk_qa_does_not_enqueue_twice) ... ok
+test_restarts_durable (test_persistence_integration.PersistenceIntegrationTests.test_restarts_durable) ... ok
+test_same_request_changed_is_rejected (test_persistence_integration.PersistenceIntegrationTests.test_same_request_changed_is_rejected) ... ok
+test_181_fields_51_tasks (test_quality.QualityTests.test_181_fields_51_tasks) ... ok
+test_edit_rejects_changed_values (test_quality.QualityTests.test_edit_rejects_changed_values) ... ok
+test_editor_requests_language_only (test_quality.QualityTests.test_editor_requests_language_only) ... ok
+test_field_binding_missing_hash (test_quality.QualityTests.test_field_binding_missing_hash) ... ok
+test_language_pass_without_error (test_quality.QualityTests.test_language_pass_without_error) ... ok
+test_local_unicode_only (test_quality.QualityTests.test_local_unicode_only) ... ok
+test_negation_lock (test_quality.QualityTests.test_negation_lock) ... ok
+test_numeric_lock (test_quality.QualityTests.test_numeric_lock) ... ok
+test_one_field_change_changes_task_id (test_quality.QualityTests.test_one_field_change_changes_task_id) ... ok
+test_pass_with_rejection_is_invalid (test_quality.QualityTests.test_pass_with_rejection_is_invalid) ... ok
+test_protected_other_fields (test_quality.QualityTests.test_protected_other_fields) ... ok
+test_scanner_must_be_real_names (test_quality.QualityTests.test_scanner_must_be_real_names) ... ok
+test_scanner_recheck_required (test_quality.QualityTests.test_scanner_recheck_required) ... ok
+test_task_stability_idempotent (test_quality.QualityTests.test_task_stability_idempotent) ... ok
+test_unapproved_field_rejected (test_quality.QualityTests.test_unapproved_field_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 58 tests in 0.807s
+
+OK
+{"accepted_chunk_count": 61, "email_sends": 0, "event": "DZ_RC2_SYNTHETIC_SIMULATION", "events": 1, "expected_chunks": 61, "generation_identity": "REDACTED", "live_site_writes": 0, "max_sends": 0, "model_calls": 0, "privacy": "hashes_and_codes_only", "publish_allowed": false, "qa_state": "qa_repair_pending", "sample_stop": "ENQUEUE_QA_FIELD_REPAIRS", "source_inputs": "SYNTHETIC", "tasks": {"local_pending": 51}, "unknown_billing": 0}
+No syntax errors detected in /mnt/data/DZ_GARDNER_RC2_20261109/php/App/Services/Children/V2/GardnerV22/Recovery/GardnerRc2StopPolicy.php
+No syntax errors detected in /mnt/data/DZ_GARDNER_RC2_20261109/php/App/Services/Children/V2/GardnerV22/Recovery/GardnerRc2QualityPlan.php
+PASS stop_quality_rejected_0
+PASS stop_provider_transport_failed_0
+PASS stop_provider_transport_failed_1
+PASS stop_provider_stream_incomplete_0
+PASS stop_provider_http_429_0
+PASS stop_provider_http_429_1
+PASS stop_provider_http_429_2
+PASS stop_report_cost_budget_exhausted_0
+PASS stop_report_request_budget_exhausted_0
+PASS stop_quality_unavailable_0
+PASS stop_checkpoint_integrity_0
+PASS stop_generation_lease_lost_1
+PASS stop_generation_lease_lost_0
+PASS stop_queue_dispatch_failed_0
+PASS stop_r27_schema_retry_exhausted_0
+PASS stop_provider_http_401_0
+PASS qa_181_51_tasks
+PASS qa_never_publishes
+PASS qa_task_ids_stable
+PASS fake_scanner_rejected
+PHP_CONTRACT_TESTS=PASS LIVE_SITE_WRITES=0 MODEL_CALLS=0 BANK_CALLS=0
+RC2_OFFLINE_QA_AND_RECOVERY_TESTS=PASS
+SITE_WRITES=0 MODEL_CALLS=0 PAYMENT_CALLS=0 MAIL_SENDS=0 MAX_SENDS=0
