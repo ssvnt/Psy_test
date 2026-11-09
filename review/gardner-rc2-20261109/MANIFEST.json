@@ -1,0 +1,147 @@
+{
+  "schema": "dz-gardner-rc2-preview-v1",
+  "date_utc": "2026-11-09",
+  "status": "STAGING_ONLY_NO_PRODUCTION_DEPLOY",
+  "source_snapshot": "2026-11-08",
+  "python_tests_passed": 58,
+  "php_contract_cases_passed": 20,
+  "cross_runtime_parity_cases": 25,
+  "requires_laravel_integration": true,
+  "site_modified": false,
+  "bank_calls": 0,
+  "model_calls": 0,
+  "mail_sends": 0,
+  "max_sends": 0,
+  "files": [
+    {
+      "path": "README.md",
+      "size": 4184,
+      "sha256": "98855d100bd4cfbd636681ba13871e559fa21029ed953542e55bfd6deee4c9cc"
+    },
+    {
+      "path": "architecture/Dobry_Zhuk_Report_Orchestrator_Architecture_RECOVERED_v1.1.md",
+      "size": 14238,
+      "sha256": "365b6868192c29e27a269846445e129a49991db196765d9a7cfb6499cadc3070"
+    },
+    {
+      "path": "docs/QA_POLICY_INTEGRATION_SCHEMA_DRAFT.md",
+      "size": 3710,
+      "sha256": "93606c6979e95b69130d901a1da4bed1dc5908f81a4da0a045af792444834db6"
+    },
+    {
+      "path": "docs/RC2_INTEGRATION_HANDOFF.md",
+      "size": 7330,
+      "sha256": "77cf8339256f296aa0eecfbd431c87ef7901cc1ecb7292698285e8c5d1565159"
+    },
+    {
+      "path": "docs/ROOT_CAUSE_TO_CHANGE_MATRIX.md",
+      "size": 5941,
+      "sha256": "5c77e30476541f6eb786ea367009d61475e49a8d8d8a81a308f10be58f72e396"
+    },
+    {
+      "path": "fixtures/QA_106_SYNTHETIC_181_51_FAIL.json",
+      "size": 28778,
+      "sha256": "ee44e45c8f742495f1f4a542efb150f27d25b8256f91f5f6b938dd7fb714fc63"
+    },
+    {
+      "path": "fixtures/STOP_CLASSIFICATION_SYNTHETIC.json",
+      "size": 2181,
+      "sha256": "6fd40feaee492669508de8b1f61e65caa9cd3f71f63bb05d7ad713be10a451b2"
+    },
+    {
+      "path": "php/App/Services/Children/V2/GardnerV22/Recovery/GardnerRc2QualityPlan.php",
+      "size": 3137,
+      "sha256": "b22340bc707cd94a00de24237894ba6e3cbee04daf7fe304c64f2735e0e2fd5d"
+    },
+    {
+      "path": "php/App/Services/Children/V2/GardnerV22/Recovery/GardnerRc2StopPolicy.php",
+      "size": 5272,
+      "sha256": "ee5492c60c5953d154e811d95759e81be1f10e2996ee3b9fdcd72432ed82dc1c"
+    },
+    {
+      "path": "report/OFFLINE_TEST_RUN.txt",
+      "size": 8457,
+      "sha256": "c0e0627ffdd321ac73cf7240a8ccea2d407babe78bb916f46962f6a45db17296"
+    },
+    {
+      "path": "report/RC2_TEST_AND_READINESS_REPORT.md",
+      "size": 2717,
+      "sha256": "79e6fc28fcee07cc3455edbd2d323010301228d6b0e99025300cda772817a928"
+    },
+    {
+      "path": "scripts/qa_readonly_inspect.py",
+      "size": 2225,
+      "sha256": "53224fd3e7db1f0666c6617ad481788f1b6ce0f062158bf62bfa505b21fe7c77"
+    },
+    {
+      "path": "scripts/rc2_readonly_host_preflight.sh",
+      "size": 1654,
+      "sha256": "999ffd13d0aaa9b808e28d3e11612d0a0a4df4c9e4cef2912ea73fc1ecf04c24"
+    },
+    {
+      "path": "scripts/readonly_rc1_rc2_host_inventory.sh",
+      "size": 736,
+      "sha256": "cf556978fa7f9ae1aa570e9834bdabb0f0bb0ece3e5ba862e0d743ca198263e9"
+    },
+    {
+      "path": "scripts/run_offline_tests.sh",
+      "size": 612,
+      "sha256": "03ed926d17b710f49c8026505f3bc28a57cefabb773e333c51f9fba6132e47ac"
+    },
+    {
+      "path": "src/dz_rc2/__init__.py",
+      "size": 102,
+      "sha256": "f4b16ed0140a8ff06bf0a5cce6b31b131dcd496a2b2186a25503d686a1adef08"
+    },
+    {
+      "path": "src/dz_rc2/policy.py",
+      "size": 5582,
+      "sha256": "3a01b32b1c8904b2d9fda2976a4631a41031249b93d57dce36268f6ad0ba9a93"
+    },
+    {
+      "path": "src/dz_rc2/quality.py",
+      "size": 5787,
+      "sha256": "a0a9e1f4dc2ea1a58b0ce361e2fe5eab22aa8d73b713e89bc7c49e670492e72e"
+    },
+    {
+      "path": "src/dz_rc2/simulator.py",
+      "size": 1398,
+      "sha256": "dddb3f447b076cbc856407310be0118365210c556b9278e6966435b52f277b76"
+    },
+    {
+      "path": "src/dz_rc2/store.py",
+      "size": 16245,
+      "sha256": "75747876116eab91da55242405c8c5e0be42f70bd8e8cadd66a115a267e03793"
+    },
+    {
+      "path": "tests/php_policy_json_cli.php",
+      "size": 464,
+      "sha256": "89be29dc14f32fc77565e4440f030118858b6be097af2e3b33bb5a850a239b66"
+    },
+    {
+      "path": "tests/test_classifier.py",
+      "size": 4106,
+      "sha256": "bba045de9460a5d8a169ea62e41eaa65f9aaedfb0d819610685894292640d6a5"
+    },
+    {
+      "path": "tests/test_contract_parity.py",
+      "size": 1320,
+      "sha256": "f45d3bda092563ea42d452ce5f849dc946cced5288ef8ca60542a922ebc5410f"
+    },
+    {
+      "path": "tests/test_persistence_integration.py",
+      "size": 9117,
+      "sha256": "534963040d70f96714cfd6016773fcc9855eef24832d7edee62fba1d5c93f396"
+    },
+    {
+      "path": "tests/test_php_policy.php",
+      "size": 2580,
+      "sha256": "41aa02078d69f088097b3e1da388db1e3d6c71010698b4b494b951bc90918c14"
+    },
+    {
+      "path": "tests/test_quality.py",
+      "size": 4633,
+      "sha256": "e5c54dbe9a416052d540ce231ce89795e98eaeffd9761d50d59df943450dbea0"
+    }
+  ]
+}
