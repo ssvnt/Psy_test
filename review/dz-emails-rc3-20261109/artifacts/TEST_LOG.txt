@@ -1,0 +1,69 @@
+No syntax errors detected in src/MailJourneyPolicy.php
+No syntax errors detected in src/MailPreviewRenderer.php
+No syntax errors detected in scripts/render_previews.php
+PASS gardner_completed_offer
+PASS gardner_completed_idempotent
+PASS gardner_followup_after_12h
+PASS gardner_followup_not_before_12h
+PASS gardner_existing_pending_suppresses
+PASS gardner_creating_suppresses
+PASS gardner_bank_unknown_suppresses
+PASS gardner_consent_required
+PASS gardner_unsubscribe
+PASS gardner_no_old_backfill
+PASS gardner_address_binding
+PASS gardner_payment_receipt_even_without_24h_promise
+PASS gardner_service_mail_independent_of_marketing_consent
+PASS gardner_paid_verified_24h
+PASS gardner_wrong_amount
+PASS gardner_published_report
+PASS gardner_pdf_integrity_required
+PASS gardner_draft_not_mailed
+PASS gardner_approval_mandatory
+PASS teen_completed_offer
+PASS teen_completed_idempotent
+PASS teen_followup_after_12h
+PASS teen_followup_not_before_12h
+PASS teen_existing_pending_suppresses
+PASS teen_creating_suppresses
+PASS teen_bank_unknown_suppresses
+PASS teen_consent_required
+PASS teen_unsubscribe
+PASS teen_no_old_backfill
+PASS teen_address_binding
+PASS teen_payment_receipt_even_without_24h_promise
+PASS teen_service_mail_independent_of_marketing_consent
+PASS teen_paid_verified_24h
+PASS teen_wrong_amount
+PASS teen_published_report
+PASS teen_pdf_integrity_required
+PASS teen_draft_not_mailed
+PASS teen_approval_mandatory
+PASS unknown_product_denied
+PASS unknown_event_denied
+RC3_MAIL_POLICY_TESTS_PASS NO_EMAILS_SENT NO_PAYMENTS NO_MODEL_CALLS
+PASS gardner_test_completed_offer_preview
+PASS gardner_unpaid_12h_preview
+PASS gardner_payment_confirmed_preview
+PASS gardner_report_ready_preview
+PASS teen_test_completed_offer_preview
+PASS teen_unpaid_12h_preview
+PASS teen_payment_confirmed_preview
+PASS teen_report_ready_preview
+PASS external_host_denied
+PASS http_denied
+PASS html_escape
+RC3_HTML_PREVIEW_TESTS_PASS
+test_buttons (test_copy.CopySafety.test_buttons) ... ok
+test_marketing_unsubscribe_copy (test_copy.CopySafety.test_marketing_unsubscribe_copy) ... ok
+test_neutral_payment_notice_always_available (test_copy.CopySafety.test_neutral_payment_notice_always_available) ... ok
+test_no_private_data_or_external_links_in_drafts (test_copy.CopySafety.test_no_private_data_or_external_links_in_drafts) ... ok
+test_subjects_and_claims (test_copy.CopySafety.test_subjects_and_claims) ... ok
+test_two_products_and_four_events (test_copy.CopySafety.test_two_products_and_four_events) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK
+RC3_PREVIEW_RENDER_PASS HTTP_CALLS=0 SMTP_CALLS=0
+RC3_OFFLINE_TESTS_PASS POLICY=40 RENDERER=11 COPY=6 SMTP=0 PAYMENTS=0 MODEL=0
