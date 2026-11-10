@@ -35,6 +35,14 @@ def check_file(path, expected):
         raise ValueError(f"Checksum mismatch: {path.name}")
 
 
+def private_output(sources, output):
+    output = output.resolve()
+    protected = (HERE.parents[1], sources.resolve(), Path("/opt"), Path("/srv"), Path("/var/www"))
+    if any(output.is_relative_to(path) for path in protected) or any((p / ".git").exists() for p in output.parents):
+        raise ValueError("Choose a new private directory outside Git worktrees, inputs and live applications")
+    return output
+
+
 def build(sources, output):
     for name, expected in REVIEW_SHA256.items():
         check_file(EVIDENCE / name, expected)
@@ -54,10 +62,7 @@ def build(sources, output):
     if len(flags) != 348 or flags != checked or any(manifest[p]["sha256"] != digest for p, (digest, _) in flags.items()):
         raise ValueError("Risk reports disagree with source inventory")
 
-    output = output.resolve()
-    protected = (HERE.parents[1], sources.resolve(), Path("/opt"), Path("/srv"), Path("/var/www"))
-    if any(output.is_relative_to(path) for path in protected) or any((p / ".git").exists() for p in output.parents):
-        raise ValueError("Choose a new private directory outside Git worktrees, inputs and live applications")
+    output = private_output(sources, output)
     output.mkdir(mode=0o700, exist_ok=False)
     try:
         seen = set()

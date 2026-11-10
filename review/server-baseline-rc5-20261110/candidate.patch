@@ -1,0 +1,35 @@
+--- a/app/Http/Controllers/Api/TeenTestController.php
++++ b/app/Http/Controllers/Api/TeenTestController.php
+@@ -34,5 +34,5 @@
+         $data = $request->validated();
+ 
+-        $data['price'] = (int) \App\Models\Setting::getValue('test_price', 3500);
++        $data['price'] = TeenReportPrice::RUBLES;
+         $data['discount_amount'] = 0;
+ 
+--- a/tests/Feature/ProductPromoPricingTest.php
++++ b/tests/Feature/ProductPromoPricingTest.php
+@@ -17,5 +17,5 @@
+         PromoCode::create(['code' => 'PRODUCT100', 'discount_amount' => 100, 'active' => true]);
+ 
+-        foreach (['' => 2490, 'children' => 2490, 'teen' => 4200] as $type => $price) {
++        foreach (['' => 2490, 'children' => 2490, 'teen' => 3490] as $type => $price) {
+             $payload = ['code' => 'PRODUCT100'];
+             if ($type !== '') {
+--- a/tests/Feature/GardnerV22PaidFlowTest.php
++++ b/tests/Feature/GardnerV22PaidFlowTest.php
+@@ -442,5 +442,5 @@
+             return Http::failedConnection('synthetic-private-network-error');
+         });
+-        $provider = new GardnerV22DeepSeekProvider(app(GardnerV22DeepSeekHttpTransport::class), app(\App\Services\Children\V2\GardnerV22\Production\GardnerV22TextQuality::class));
++        $provider = app()->makeWith(GardnerV22DeepSeekProvider::class, ['transport' => app(GardnerV22DeepSeekHttpTransport::class)]);
+         $meter = new \App\Services\Children\V2\GardnerV22\Production\GardnerV22MeteredProvider($provider,
+             app(\App\Services\Children\V2\GardnerV22\Production\GardnerV22AttemptLedger::class), app(GardnerV22PaidArtifactStore::class));
+--- a/tests/Support/GardnerCommerceReady.php
++++ b/tests/Support/GardnerCommerceReady.php
+@@ -10,4 +10,5 @@
+     {
+         config(['gardner_commerce.enabled' => true, 'gardner_commerce.sales_enabled' => true,
++            'gardner_commerce.live_mail' => true, // Both suites install Mail::fake() before configuring checkout.
+             'gardner_commerce.identity_enabled' => true, 'gardner_commerce.identity_policy_id' => 'QA_PROTOTYPE_NOT_PRODUCTION_AUTHORIZATION',
+             'gardner_commerce.bank_rub_contract_id' => 'QA_SYNTHETIC_RUB_CONTRACT',

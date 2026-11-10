@@ -1,0 +1,26 @@
+{
+  "additional_files": {
+    "app/Services/Payments/TeenReportPrice.php": "49c741aeeeb5e6277333604989f77ef0e08e827a841ddf0aac9834ec8627ceec",
+    "app/Services/Payments/TochkaOperationGuard.php": "5b375b3145128dfe1ec3a0bafcea966e780d226adc4297f1c4204651b3fad255",
+    "resources/gardner/v2/text-quality/humanizer-ru/LICENSE": "df96cb93e068e585693075a44606d98ddb3df5e92c42eb3fdf4881945a2a9f75",
+    "resources/gardner/v2/text-quality/pishi-normalno/LICENSE": "f5292ce6b903b12c8f4e024c956eee7315268bb45ecd73f7812b5ea6bb5b8af1"
+  },
+  "patched_files": {
+    "app/Http/Controllers/Api/TeenTestController.php": {
+      "after": "6ba2077e9c8c1fcf7309922eb6f0451199e306399756c700e79f82855a3787a8",
+      "before": "24785269335852bcc8c42b7fe2b6b75d7ba0297fde3b5370f6bdfcb9aaf7432a"
+    },
+    "tests/Feature/GardnerV22PaidFlowTest.php": {
+      "after": "84669ae076bb8ad99054280e507774a37dbbdefcbc8f23912e3d5833d2908c83",
+      "before": "320232f99211e67e3fdc91ba6902bd058ae977fbea989bd2ba8dec53a57548e8"
+    },
+    "tests/Feature/ProductPromoPricingTest.php": {
+      "after": "01f59d76d9215f963001c9a1acfa639a4419035e5faff6f696bc53e83ee85287",
+      "before": "b2b84c472fc0677c60aabf8e5d4584860ec57cc1308ff9a72f9044890361bd68"
+    },
+    "tests/Support/GardnerCommerceReady.php": {
+      "after": "6cb8954f7b28d032a5149e3400a4344cfc05b4558e31925bada2f530d8a2c7c9",
+      "before": "192b917d28762179af03dee3b37bcfacc345c23cffc1b0b228c57b9bd3370204"
+    }
+  }
+}
