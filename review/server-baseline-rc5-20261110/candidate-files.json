@@ -3,7 +3,15 @@
     "app/Services/Payments/TeenReportPrice.php": "49c741aeeeb5e6277333604989f77ef0e08e827a841ddf0aac9834ec8627ceec",
     "app/Services/Payments/TochkaOperationGuard.php": "5b375b3145128dfe1ec3a0bafcea966e780d226adc4297f1c4204651b3fad255",
     "resources/gardner/v2/text-quality/humanizer-ru/LICENSE": "df96cb93e068e585693075a44606d98ddb3df5e92c42eb3fdf4881945a2a9f75",
-    "resources/gardner/v2/text-quality/pishi-normalno/LICENSE": "f5292ce6b903b12c8f4e024c956eee7315268bb45ecd73f7812b5ea6bb5b8af1"
+    "resources/gardner/v2/text-quality/pishi-normalno/LICENSE": "f5292ce6b903b12c8f4e024c956eee7315268bb45ecd73f7812b5ea6bb5b8af1",
+    "resources/js/content/teen-report-example.json": "8f9add05d8c27989187523d5c44115feeb6b0cd618649c0f3582d857e561755e",
+    "resources/js/content/children-report-example.json": "b891caac64cce1549143d518150a750c9a71386fafb861236fc4995fb87d6ee4",
+    "resources/js/views/ChildrenFreeExample.vue": "61d96f5914c3fb306e2f22b018c4bc1ec729b4b40dc0d238e6d7f813ed56123f",
+    "resources/js/views/ReportExample.vue": "64c5e5e1be53b924d4a85ced1066321a8877fc933ea37d117c571e893a8d3754",
+    "public/examples/gardner-egor-v1/Egor-Report.html": "eed50c8988404da16fbf9fb3361e6171a3b69c1b440c86728b54485a06e658ce",
+    "public/examples/gardner-egor-v1/Egor-Report.pdf": "ae89385a7bc6290f921c4b7995916f01cceac15589580fc61b25205b40a2bc70",
+    "public/examples/teen-anna-v1/Anna-Report.html": "ec0f71da4f66efd44538e84362b9ac2886334fe76b5ee2185a5506700774cac2",
+    "public/examples/teen-anna-v1/Anna-Report.pdf": "c4581cc3bcb8c7895828cd864048c21b7499697dba087821e110b942925adc1f"
   },
   "patched_files": {
     "app/Http/Controllers/Api/TeenTestController.php": {
@@ -21,6 +29,26 @@
     "tests/Support/GardnerCommerceReady.php": {
       "after": "6cb8954f7b28d032a5149e3400a4344cfc05b4558e31925bada2f530d8a2c7c9",
       "before": "192b917d28762179af03dee3b37bcfacc345c23cffc1b0b228c57b9bd3370204"
+    },
+    "resources/js/views/ChildrenLandingPage.vue": {
+      "before": "8909a40b2661d64736af8d5ff1e6dc51680c87f19f2a7cf30e1d94449a720097",
+      "after": "0ac0eb09a75ae35c24b166d5ba48563c91648438236ba7faec7532f4b42b1373"
+    },
+    "resources/js/views/TeenFreeExample.vue": {
+      "before": "532529347f80339ec282ebd9fd4259b0f103dcf319b0a8464ba110d0a04db856",
+      "after": "0574758076a436036ffcb4d99edd51804c04b3b1385e76206bd3e0943e7dfaa2"
+    },
+    "resources/js/views/ResultPage.vue": {
+      "before": "5fb42e0d27629fd40909887bfa352072737f85890d4873a92d270d133726ca13",
+      "after": "66ff80b8659959268aad79feab0153575f7ad45d2f1345326210c273c5d37419"
+    },
+    "resources/js/components/children/GardnerFreeResult.vue": {
+      "before": "cfa8166bf25b3126c0b7290987121b396dd40d03bc3b5e983886d14c4cdb3fcc",
+      "after": "994ee3fdf906fb96da15f5f44e0258c9ba4c518137311d093ebbb51ad4698f73"
+    },
+    "resources/js/router.js": {
+      "before": "d0ba2c9a3ab07a85ccc1cb81a827d2d4dafdd05d36f4bef92bbb3bc71cf5323b",
+      "after": "4e707dfa0ca8800d87e8fc89f4d37c4b4765ad790ac9ea71fcc551ec699222f2"
     }
   }
 }

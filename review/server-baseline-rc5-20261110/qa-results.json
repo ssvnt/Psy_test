@@ -140,5 +140,44 @@
     }
   ],
   "candidate_rebuild_files_compared": 1274,
-  "candidate_rebuild_byte_differences": 0
+  "candidate_rebuild_byte_differences": 0,
+  "designer_examples": {
+    "source_package_sha256": "3b81e6568227f2029d00f4d5ed947947808e0f34f7dda7673744788f30813a0c",
+    "files": {
+      "public/examples/gardner-egor-v1/Egor-Report.html": "eed50c8988404da16fbf9fb3361e6171a3b69c1b440c86728b54485a06e658ce",
+      "public/examples/gardner-egor-v1/Egor-Report.pdf": "ae89385a7bc6290f921c4b7995916f01cceac15589580fc61b25205b40a2bc70",
+      "public/examples/teen-anna-v1/Anna-Report.html": "ec0f71da4f66efd44538e84362b9ac2886334fe76b5ee2185a5506700774cac2",
+      "public/examples/teen-anna-v1/Anna-Report.pdf": "c4581cc3bcb8c7895828cd864048c21b7499697dba087821e110b942925adc1f"
+    },
+    "browser": "Chromium 150 + Playwright, Laravel with Vite production assets, isolated SQLite",
+    "widths_css_px": [
+      390,
+      1440
+    ],
+    "products": [
+      "children",
+      "teen"
+    ],
+    "verified": [
+      "landing button to demo choice",
+      "free anchor scroll",
+      "full HTML and PDF, status and SHA-256",
+      "browser Back",
+      "landing lower link directly to full report",
+      "old children demo URLs",
+      "children registration",
+      "absence of horizontal overflow, broken same-origin requests, console page errors and writes"
+    ],
+    "egor_pdf_a4_pages": 8,
+    "private_rebuild_matching_files": 1282,
+    "phpunit": {
+      "tests": 1241,
+      "assertions": 87681,
+      "failures": 14,
+      "errors": 1,
+      "skipped": 5,
+      "warnings": 1
+    },
+    "open_cases_identical_to_previous_run": true
+  }
 }
