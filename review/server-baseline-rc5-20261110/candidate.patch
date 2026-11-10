@@ -206,3 +206,288 @@
 +        return { name: 'children.demo' };
 +    }
 +});
+--- a/app/Services/GardnerV22PdfHtmlBuilder.php
++++ b/app/Services/GardnerV22PdfHtmlBuilder.php
+@@ -10,4 +10,6 @@
+ final readonly class GardnerV22PdfHtmlBuilder
+ {
++    public const EMPTY_FINAL_NOTE = '<p class="empty-note" data-v22-empty-final="1">В этом плане не выделены отдельные итоговые ориентиры.</p>';
++
+     public function __construct(private GardnerV22PdfDocumentGuard $guard = new GardnerV22PdfDocumentGuard) {}
+ 
+@@ -141,8 +143,5 @@
+     {
+         if ($section['items'] === []) {
+-            $guidance = $hasActivities ? 'Подсказки о том, на что обратить внимание во время проб, приведены в описаниях занятий.'
+-                : 'Подсказки для ближайших действий приведены в рекомендациях и плане на месяц.';
+-
+-            return $this->section($section, '<p class="empty-note" data-v22-empty-observations="1">В этом плане не выделены отдельные пункты для наблюдения. '.$guidance.'</p>');
++            return $this->section($section, self::emptyObservationNote($hasActivities));
+         }
+         $html = '';
+@@ -152,4 +151,12 @@
+ 
+         return $this->section($section, $html);
++    }
++
++    public static function emptyObservationNote(bool $hasActivities): string
++    {
++        $guidance = $hasActivities ? 'Подсказки о том, на что обратить внимание во время проб, приведены в описаниях занятий.'
++            : 'Подсказки для ближайших действий приведены в рекомендациях и плане на месяц.';
++
++        return '<p class="empty-note" data-v22-empty-observations="1">В этом плане не выделены отдельные пункты для наблюдения. '.$guidance.'</p>';
+     }
+ 
+@@ -173,5 +180,5 @@
+         }
+         if ($groups === '') {
+-            $groups = '<p class="empty-note" data-v22-empty-final="1">В этом плане не выделены отдельные итоговые ориентиры.</p>';
++            $groups = self::EMPTY_FINAL_NOTE;
+         }
+         $columns = count($groupCharacters);
+--- a/app/Services/GardnerV22BrandedHtmlBuilder.php
++++ b/app/Services/GardnerV22BrandedHtmlBuilder.php
+@@ -100,5 +100,5 @@
+                 throw new RuntimeException('BRANDED_RENDERER_SECTION_'.$id);
+             }
+-            $sections .= $this->section($id, $section, $index + 1, $data['profile']['scales']);
++            $sections .= $this->section($id, $section, $index + 1, $data['profile']['scales'], $data['sections']['activities']['groups'] !== []);
+         }
+ 
+@@ -145,5 +145,5 @@
+     }
+ 
+-    private function section(string $id, array $section, int $number, array $scales): string
++    private function section(string $id, array $section, int $number, array $scales, bool $hasActivities): string
+     {
+         $title = $this->e((string)($section['title'] ?? ''));
+@@ -178,10 +178,18 @@
+             foreach (['preserve' => 'Сохранить', 'try' => 'Попробовать', 'observe' => 'Наблюдать'] as $key => $label) {
+                 $items = $section[$key] ?? null;
+-                if (!is_array($items) || $items === []) {
++                if (!is_array($items)) {
+                     throw new RuntimeException('BRANDED_RENDERER_FINAL_GROUP_'.$key);
++                }
++                if ($items === []) {
++                    continue;
+                 }
+                 $body .= '<div data-v22-final-group="'.$key.'" class="final-group">'
+                     .'<h3>'.$label.'</h3>'.$this->cards($items, 'final').'</div>';
+             }
++            if ($body === '') {
++                $body = GardnerV22PdfHtmlBuilder::EMPTY_FINAL_NOTE;
++            }
++        } elseif ($id === 'observe_next' && ($section['items'] ?? null) === []) {
++            $body = GardnerV22PdfHtmlBuilder::emptyObservationNote($hasActivities);
+         } else {
+             $body = $this->intro($section);
+--- a/app/Services/GardnerCommerce/Consultations.php
++++ b/app/Services/GardnerCommerce/Consultations.php
+@@ -23,6 +23,10 @@
+             ->where('s.published', true)->where('p.active', true)->where('s.starts_at', '>', now('UTC'))
+             ->whereNotExists(fn ($q) => $q->selectRaw('1')->from('gardner_consultations as b')->whereColumn('b.slot_id', 's.id'))
+-            ->orderBy('s.starts_at')->limit(200)->get(['s.id', 's.starts_at', 's.ends_at', 's.timezone', 'p.name as specialist'])
+-            ->map(fn ($s) => $this->iso((array) $s))->all();
++            ->select(['s.id', 's.starts_at', 's.ends_at', 's.timezone', 'p.name as specialist'])
++            ->orderBy('s.starts_at')->orderBy('s.id')->lazy(200)
++            ->filter(fn ($slot) => $this->withinOwnerSchedule(
++                CarbonImmutable::parse($slot->starts_at, 'UTC'), CarbonImmutable::parse($slot->ends_at, 'UTC')
++            ))
++            ->take(200)->map(fn ($slot) => $this->iso((array) $slot))->values()->all();
+     }
+ 
+--- a/app/Services/GardnerCommerce/Orders.php
++++ b/app/Services/GardnerCommerce/Orders.php
+@@ -41,4 +41,6 @@
+             // the invoice is persisted and sent to Tochka. All other sessions: 2490 RUB.
+             $quote = app(Prices::class)->quote($session->promo_code, (string) $session->public_id);
++            // The legacy session stores whole rubles. Reject an unrepresentable quote before creating a bank operation.
++            abort_if($quote['base_kopecks'] % 100 !== 0 || $quote['discount_kopecks'] % 100 !== 0, 409, 'Условия скидки требуют проверки.');
+             // No email OTP before checkout: the existing 64-hex owner capability is
+             // already checked by BuyerAccess::authorize() at the API boundary.
+@@ -56,6 +58,6 @@
+             $payment = app(PaymentGateway::class)->createOrder($session, $order);
+             DB::transaction(function () use ($session, $order, $payment) {
+-                TestSession::whereKey($session->id)->update(['price' => app(Prices::class)->rubles($order->base_kopecks),
+-                    'discount_amount' => app(Prices::class)->rubles($order->discount_kopecks),
++                TestSession::whereKey($session->id)->update(['price' => intdiv($order->base_kopecks, 100),
++                    'discount_amount' => intdiv($order->discount_kopecks, 100),
+                     'payment_id' => $payment['operation_id'], 'payment_link' => $payment['payment_url']]);
+                 DB::table('gardner_orders')->where('id', $order->id)->update($payment + ['status' => 'pending', 'updated_at' => now()]);
+@@ -77,11 +79,5 @@
+         $data = app(PaymentGateway::class)->operation($order->operation_id);
+         $amount = app(Prices::class)->kopecks($data['amount'] ?? null);
+-        // Tochka's acquiring/v1.0/payments operation schema may omit currency.
+-        // We created this exact, frozen RUB invoice via that API. An explicit
+-        // non-RUB bank currency is still rejected. All identity/amount checks
+-        // below must pass before accepting APPROVED.
+         $bankCurrency = $data['currency'] ?? $data['currencyCode'] ?? null;
+-        $currency = $bankCurrency === null ? 'RUB'
+-            : ((string) $bankCurrency === '643' ? 'RUB' : (string) $bankCurrency);
+         // One externally-created Tochkaplace payment manually identified through
+         // the bank GET API. No wildcard currency, amount or receipt acceptance.
+@@ -94,4 +90,11 @@
+             && hash_equals(mb_strtolower(trim((string) $session->email)),
+                 mb_strtolower(trim((string) data_get($data, 'Client.email', ''))));
++        $rubContract = config('gardner_commerce.bank_rub_contract_id');
++        $canInferRub = $externalReceiptVerified || (is_string($rubContract) && trim($rubContract) !== '');
++        $currency = match ($bankCurrency) {
++            'RUB', '643', 643 => 'RUB',
++            null => $canInferRub ? 'RUB' : null,
++            default => null,
++        };
+         $status = $data['status'] ?? '';
+         $refund = in_array($status, ['ON-REFUND','REFUNDED','REFUNDED_PARTIALLY'], true);
+--- a/app/Services/Children/V2/GardnerV22/Production/GardnerV22MeteredProvider.php
++++ b/app/Services/Children/V2/GardnerV22/Production/GardnerV22MeteredProvider.php
+@@ -31,4 +31,8 @@
+                         throw new GardnerV22GenerationException('single_retry_exhausted');
+                     }
++                    if ($previous->state === 'billing_unknown'
++                        && in_array($failure->reason, ['provider_invalid_json', 'provider_incomplete_reply'], true)) {
++                        throw new GardnerV22GenerationException('billing_reconciliation_required');
++                    }
+                     // An explicitly authorized retry may replace a syntactically incomplete body.
+                     // Broken hashes, encryption, identity, usage and policy are never ignored.
+@@ -40,5 +44,5 @@
+                     try { $saved->assertComplete(); }
+                     catch (GardnerV22GenerationException $failure) {
+-                        if ((int) $previous->attempt_no !== 1) throw $failure;
++                        if ((int) $previous->attempt_no !== 1 || config('gardner_report_v22.r27_single_retry_enabled') !== true) throw $failure;
+                         $this->ledger->authorizeOneRetry($previous->id, 'completed');
+                         continue;
+@@ -87,5 +91,5 @@
+             try { $reply->assertComplete(); }
+             catch (GardnerV22GenerationException $error) {
+-                if ((int)$attempt->attempt_no !== 1) throw $error;
++                if ((int)$attempt->attempt_no !== 1 || config('gardner_report_v22.r27_single_retry_enabled') !== true) throw $error;
+                 $this->ledger->authorizeOneRetry($attempt->id, 'completed');
+                 continue;
+--- a/tests/Feature/GardnerCommerceTest.php
++++ b/tests/Feature/GardnerCommerceTest.php
+@@ -51,10 +51,12 @@
+     }
+     private function paid(): void { $this->verified(); $this->gateway(); $this->postJson($this->url('/order'))->assertOk(); $this->postJson($this->url('/check'))->assertOk()->assertJsonPath('status','paid'); }
+-    private function slot(int $hour=1): int
++    private function slot(int $offset=0): int
+     {
+         $admin = Admin::firstOrCreate(['login'=>'specialist'],['name'=>'QA','password'=>bcrypt('unused')]);
+         $specialist = DB::table('gardner_specialists')->where('admin_id',$admin->id)->value('id')
+             ?? DB::table('gardner_specialists')->insertGetId(['admin_id'=>$admin->id,'name'=>'Специалист QA','email'=>'specialist@example.test','active'=>true]);
+-        return DB::table('gardner_consultation_slots')->insertGetId(['specialist_id'=>$specialist,'starts_at'=>now('UTC')->addDays(2)->startOfDay()->addHours($hour),'ends_at'=>now('UTC')->addDays(2)->startOfDay()->addHours($hour+1),'timezone'=>'Asia/Irkutsk','published'=>true]);
++        $start = \Carbon\CarbonImmutable::now('Asia/Irkutsk')->next('Wednesday')->setTime(10, 0)->addMinutes(20 * $offset)->utc();
++        return DB::table('gardner_consultation_slots')->insertGetId(['specialist_id' => $specialist,
++            'starts_at' => $start, 'ends_at' => $start->addMinutes(20), 'timezone' => 'Asia/Irkutsk', 'published' => true]);
+     }
+     private function booking(int $slot,int $version=0,array $changes=[]): array { return array_replace(['request_id'=>(string) Str::uuid(),'version'=>$version,'action'=>'book','slot_id'=>$slot,'timezone'=>'Asia/Irkutsk','questions'=>'Какие занятия попробовать?','share_report'=>false,'consent_version'=>Consultations::CONSENT_VERSION],$changes); }
+@@ -65,8 +67,11 @@
+     }
+ 
+-    public function test_email_verified_before_order_price_and_server_confirmation_idempotence(): void
++    public function test_owner_can_order_before_email_verification_and_confirm_only_one_bank_payment(): void
+     {
+         $this->gateway('CREATED');
+-        $this->postJson($this->url('/order'))->assertStatus(409); Http::assertNothingSent();
++        $this->postJson($this->url('/order'))->assertOk();
++        self::assertNull(DB::table('gardner_buyers')->where('test_session_id', $this->session->id)->value('verified_at'));
++        self::assertFalse(app(Orders::class)->paid($this->session));
++        Http::assertSentCount(1);
+         $this->postJson($this->url('/verify-email'))->assertStatus(202); $code=$this->code();
+         $this->postJson($this->url('/verify-email-confirm'),$code)->assertOk();
+@@ -81,5 +86,5 @@
+         self::assertSame(1,DB::table('gardner_mail_outbox')->where('kind','payment_confirmed')->count());
+         self::assertSame(1,DB::table('jobs')->count());
+-        $this->getJson($this->url())->assertOk()->assertJsonPath('paid',true)->assertJsonPath('price',2490);
++        $this->getJson($this->url())->assertOk()->assertJsonPath('paid',true)->assertJsonPath('price','2490.00');
+     }
+ 
+@@ -157,4 +162,17 @@
+         self::assertSame(0,DB::table('gardner_consultations')->value('share_report'));
+         $this->getJson($this->url())->assertOk()->assertJsonCount(2,'slots');
++    }
++
++    public function test_legacy_slot_outside_the_owner_schedule_is_hidden_and_cannot_be_booked(): void
++    {
++        $this->paid();
++        $invalid = $this->slot();
++        $outside = \Carbon\CarbonImmutable::now('Asia/Irkutsk')->next('Monday')->setTime(11, 0)->utc();
++        DB::table('gardner_consultation_slots')->where('id', $invalid)->update([
++            'starts_at' => $outside, 'ends_at' => $outside->addMinutes(20),
++        ]);
++        $valid = $this->slot(1);
++        $this->getJson($this->url())->assertOk()->assertJsonCount(1, 'slots')->assertJsonPath('slots.0.id', $valid);
++        $this->postJson($this->url('/consultation'), $this->booking($invalid))->assertStatus(409);
+     }
+ 
+@@ -272,6 +290,7 @@
+         $this->withHeader('Authorization','Bearer '.$token)->getJson('/api/admin/sessions')->assertForbidden();
+         $this->putJson('/api/admin/gardner-consultations/profile',['name'=>'QA updated','email'=>'qa@example.test'])->assertOk();
+-        $this->postJson('/api/admin/gardner-consultations/slots',['starts_at'=>now('UTC')->addDays(2)->toIso8601String(),
+-            'ends_at'=>now('UTC')->addDays(2)->addHour()->toIso8601String(),'timezone'=>'Asia/Irkutsk'])->assertOk();
++        $start = \Carbon\CarbonImmutable::now('Asia/Irkutsk')->next('Saturday')->setTime(19, 40);
++        $this->postJson('/api/admin/gardner-consultations/slots', ['starts_at' => $start->toIso8601String(),
++            'ends_at' => $start->addMinutes(20)->toIso8601String(), 'timezone' => 'Asia/Irkutsk'])->assertOk();
+         self::assertCount(1,app(Consultations::class)->slots());
+     }
+@@ -311,13 +330,26 @@
+         $this->withoutHeader('Authorization');app(Outbox::class)->ready($this->session);
+         self::assertSame(0,DB::table('gardner_mail_outbox')->where('test_session_id',$this->session->id)->where('kind','report_ready')->count());
+-        $this->postJson($this->url('/consultation'),$this->booking($this->slot(),0,['share_report'=>true]))->assertOk()->assertJsonPath('status','confirmed');
++        $slot = $this->slot();
++        Admin::where('login', 'specialist')->update(['max_id' => 90001]);
++        config(['services.max.bot_token' => 'qa-only', 'services.max.api_base_url' => 'https://max.example.test',
++            'services.max.notifications_enabled' => true]);
++        Http::swap(new \Illuminate\Http\Client\Factory);
++        Http::preventStrayRequests();
++        $maxUrl = 'https://max.example.test/messages?chat_id=90001';
++        Http::fake([$maxUrl => Http::response(['message_id' => 'qa-confirmed'])]);
++        $booking = $this->booking($slot, 0, ['share_report' => true]);
++        $this->postJson($this->url('/consultation'), $booking)->assertOk()->assertJsonPath('status', 'confirmed');
++        $this->postJson($this->url('/consultation'), $booking)->assertOk()->assertJsonPath('version', 1);
++        Http::assertSentCount(1);
++        Http::assertSent(fn ($request) => $request->url() === $maxUrl && $request->method() === 'POST'
++            && str_contains($request['text'], 'Новая запись') && str_contains($request['text'], 'Версия записи: 1'));
+         foreach(DB::table('gardner_mail_outbox')->pluck('id') as $mailId)app(Outbox::class)->deliver($mailId);
+         Mail::assertSent(GardnerCommerceMail::class,fn($m)=>$m->kind==='payment_confirmed');
+-        Mail::assertSent(GardnerCommerceMail::class,fn($m)=>$m->kind==='consultation_confirmed' && $m->hasTo('specialist@example.test'));
++        Mail::assertSent(GardnerCommerceMail::class,fn($m)=>$m->kind==='consultation_confirmed' && $m->hasTo('buyer@example.test'));
+         Mail::assertNotSent(GardnerCommerceMail::class,fn($m)=>$m->kind==='report_ready');
+         $out=getenv('GARDNER_QA_OUTPUT').'/e2e';if(!is_dir($out))mkdir($out,0700,true);
+         file_put_contents($out.'/report.html',$html);file_put_contents($out.'/report.pdf',$pdf);
+         file_put_contents($out.'/RECEIPT.json',json_encode(['status'=>'PASS','scope'=>'REAL_HTTP_START_SUBMIT_SCORING_FREE_RESULT_ORDER_CONFIRM_QUEUE_NATIVE_GENERATION_REVIEW_PDF_OUTBOX_BOOKING',
+-            'fake_boundaries'=>['CAPTCHA HTTP','bank HTTP','Cloud.ru transport','Mail::fake'],'model_calls'=>31,'real_model_calls'=>0,'real_payments'=>0,'real_emails'=>0,
++            'fake_boundaries'=>['CAPTCHA HTTP','bank HTTP','Cloud.ru transport','Mail::fake','MAX HTTP'],'model_calls'=>31,'real_model_calls'=>0,'real_payments'=>0,'real_emails'=>0,
+             'buyer_delivery'=>'BLOCKED_DRAFT_423','ready_email_sent'=>false,'pdf_sha256'=>hash('sha256',$pdf),'html_sha256'=>hash('sha256',$html)],JSON_PRETTY_PRINT));
+     }
+--- a/tests/Feature/GardnerServerIntegrationTest.php
++++ b/tests/Feature/GardnerServerIntegrationTest.php
+@@ -117,4 +117,17 @@
+         self::assertSame(0, DB::table('gardner_mail_outbox')->where('kind', 'payment_confirmed')->count());
+         self::assertCount(0, app(\App\Services\Children\V2\GardnerV22\Production\GardnerV22DeepSeekTransport::class)->calls);
++    }
++
++    public function test_omitted_currency_can_use_the_verified_rub_contract_after_a_rejected_check(): void
++    {
++        $this->postJson($this->url('/order'))->assertOk();
++        $this->bank = ['currency' => null];
++        config(['gardner_commerce.bank_rub_contract_id' => ' ']);
++        $this->postJson($this->url('/check'))->assertStatus(409);
++        self::assertFalse(app(Orders::class)->paid($this->session));
++        config(['gardner_commerce.bank_rub_contract_id' => 'QA_SYNTHETIC_RUB_CONTRACT']);
++        $this->postJson($this->url('/check'))->assertOk()->assertJsonPath('status', 'paid');
++        $this->postJson($this->url('/check'))->assertOk()->assertJsonPath('status', 'paid');
++        self::assertSame(1, DB::table('gardner_mail_outbox')->where('kind', 'payment_confirmed')->count());
+     }
+ 
+@@ -272,6 +285,9 @@
+         $this->putJson($prefix.'/profile',['name'=>'QA specialist','email'=>'staff@example.invalid'])->assertOk();
+         $slotIds=[];
+-        foreach ([3,4] as $days) $slotIds[]=$this->postJson($prefix.'/slots',['starts_at'=>now('UTC')->addDays($days)->toIso8601String(),
+-            'ends_at'=>now('UTC')->addDays($days)->addMinutes(45)->toIso8601String(),'timezone'=>'Asia/Irkutsk'])->assertOk()->json('id');
++        foreach (['Wednesday', 'Saturday'] as $day) {
++            $start = \Carbon\CarbonImmutable::now('Asia/Irkutsk')->next($day)->setTime(11, 20);
++            $slotIds[] = $this->postJson($prefix.'/slots', ['starts_at' => $start->toIso8601String(),
++                'ends_at' => $start->addMinutes(20)->toIso8601String(), 'timezone' => 'Asia/Irkutsk'])->assertOk()->json('id');
++        }
+         $this->getJson($prefix.'/slots')->assertOk()->assertJsonCount(2,'slots')->assertJsonPath('timezone','Asia/Irkutsk');
+         $body=['request_id'=>(string)Str::uuid(),'version'=>0,'action'=>'book','slot_id'=>$slotIds[0],'timezone'=>'Europe/Moscow',
