@@ -28,14 +28,6 @@
       "skipped": 5,
       "warnings": 1
     },
-    "final": {
-      "tests": 1243,
-      "assertions": 89139,
-      "failures": 1,
-      "errors": 0,
-      "skipped": 5,
-      "warnings": 1
-    },
     "before_integration": {
       "tests": 1241,
       "assertions": 87681,
@@ -43,6 +35,30 @@
       "errors": 1,
       "skipped": 5,
       "warnings": 1
+    },
+    "before_launcher_restore": {
+      "tests": 1243,
+      "assertions": 89139,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 5,
+      "warnings": 1
+    },
+    "launcher_restored": {
+      "tests": 1243,
+      "assertions": 89164,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5,
+      "warnings": 0
+    },
+    "final": {
+      "tests": 1243,
+      "assertions": 91594,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 3,
+      "warnings": 0
     }
   },
   "final_open_cases": [
@@ -60,24 +76,9 @@
       "class": "Tests\\Unit\\Children\\DrpeV2RealMaxGatePreparationTest",
       "test": "test_operator_reexecution_is_explicit_fail_closed_and_uses_the_k2_client_path",
       "outcome": "skipped"
-    },
-    {
-      "class": "Tests\\Unit\\Children\\DrpeV2RealMaxGatePreparationTest",
-      "test": "test_private_operator_launcher_is_secretless_single_batch_and_watchdog_bounded",
-      "outcome": "failure"
-    },
-    {
-      "class": "Tests\\Unit\\Children\\GardnerV22ProductionCoreTest",
-      "test": "test_real_stage210_sources_are_adapted_deterministically_without_test_fixture_dependency",
-      "outcome": "skipped"
-    },
-    {
-      "class": "Tests\\Unit\\Children\\GardnerV22ProductionCoreTest",
-      "test": "test_current_stage210_pipeline_rebuilds_the_accepted_real_deterministic_sources",
-      "outcome": "skipped"
     }
   ],
-  "candidate_rebuild_files_compared": 1282,
+  "candidate_rebuild_files_compared": 1283,
   "candidate_rebuild_byte_differences": 0,
   "designer_examples": {
     "source_package_sha256": "3b81e6568227f2029d00f4d5ed947947808e0f34f7dda7673744788f30813a0c",
@@ -250,5 +251,22 @@
     "full_staging_chain_verified": false,
     "production_ssh": "network unreachable",
     "release_decision": "NO-GO"
+  },
+  "historical_qa": {
+    "launcher": {
+      "sha256": "0989eebc61a3dda879700d98eac8cf7aac99b7c7f850677a1a96a8e150513610",
+      "assertions": 26,
+      "executed_by_powershell": false,
+      "matches_20261101_developer_copy": true
+    },
+    "stage210": {
+      "reference_archive_sha256": "e67756051e8422fc5acb4c79d4586251d6142cc9c5f128cc29eb0523fe4c3fc6",
+      "banks_archive_sha256": "9f1f4ff4d23e10dd3ffb7572d8014b08f7a09f2215d73dfce81453356423ee9b",
+      "reference_files": 7,
+      "bank_and_configuration_files": 13,
+      "tests_passed": 2,
+      "assertions": 2430,
+      "private_inputs_published": false
+    }
   }
 }

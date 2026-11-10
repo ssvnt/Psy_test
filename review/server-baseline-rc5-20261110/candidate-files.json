@@ -11,7 +11,8 @@
     "public/examples/gardner-egor-v1/Egor-Report.html": "eed50c8988404da16fbf9fb3361e6171a3b69c1b440c86728b54485a06e658ce",
     "public/examples/gardner-egor-v1/Egor-Report.pdf": "ae89385a7bc6290f921c4b7995916f01cceac15589580fc61b25205b40a2bc70",
     "public/examples/teen-anna-v1/Anna-Report.html": "ec0f71da4f66efd44538e84362b9ac2886334fe76b5ee2185a5506700774cac2",
-    "public/examples/teen-anna-v1/Anna-Report.pdf": "c4581cc3bcb8c7895828cd864048c21b7499697dba087821e110b942925adc1f"
+    "public/examples/teen-anna-v1/Anna-Report.pdf": "c4581cc3bcb8c7895828cd864048c21b7499697dba087821e110b942925adc1f",
+    "tools/gardner/run-a08-k3.ps1": "0989eebc61a3dda879700d98eac8cf7aac99b7c7f850677a1a96a8e150513610"
   },
   "patched_files": {
     "app/Http/Controllers/Api/TeenTestController.php": {
