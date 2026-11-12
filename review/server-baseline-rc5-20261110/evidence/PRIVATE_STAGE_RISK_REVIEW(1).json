@@ -1,0 +1,2472 @@
+{
+  "schema": "dz-private-source-risks-v1",
+  "public_push_authorized": false,
+  "security_gate": "HOLD_REVIEW_NOT_AUTO_APPROVED",
+  "source_files_scanned": 1800,
+  "private_candidate_files": 1266,
+  "generated_files_omitted": 534,
+  "risk_count_by_code": {
+    "ASSET_LICENSE_OR_PROVENANCE_REVIEW": 300,
+    "BANK_PAYMENT_LINK_LITERAL": 4,
+    "EMAIL_ADDRESS_IN_SOURCE": 30,
+    "HISTORIC_PAID_CUSTOMER_OVERRIDE_REVIEW": 2,
+    "PHONE_RU_LIKE": 19,
+    "UUID_LITERAL": 11
+  },
+  "files_requiring_manual_review": [
+    {
+      "path": "site/app/Mail/ReportGenerationFailedMail.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "f604eea99d004dd23a6312909763a3092cf5ebe782daea089c54140b3c6fb256"
+    },
+    {
+      "path": "site/app/Mail/ReportGenerationStartedMail.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "b0b16de73d01aa1fe283b95b7201d91b52cd6f389125a589439d70efde97f5c6"
+    },
+    {
+      "path": "site/app/Mail/TeenTestInterpretationReadyMail.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "5b94956032dc88d54eea974b9990990ccc2823ab3d70cb5f779b2711788e983a"
+    },
+    {
+      "path": "site/app/Mail/TestInterpretationPaymentAcceptedMail.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "437b804f467a3f243d2a9246c5eb7f8c31d3f12160d172e5f624cf320e6ab9d5"
+    },
+    {
+      "path": "site/app/Mail/TestInterpretationReadyMail.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "d114926b73695dbb40848cdeec63c0707dd5fab149d02bc93861497cbd449449"
+    },
+    {
+      "path": "site/app/Services/TeenReportReleaseGate.php",
+      "codes": [
+        "UUID_LITERAL"
+      ],
+      "sha256": "4d58acb422765b0ecc07b079d1a6152174640a9828f9b464f458306dd7674997"
+    },
+    {
+      "path": "site/app/Services/GardnerCommerce/Orders.php",
+      "codes": [
+        "HISTORIC_PAID_CUSTOMER_OVERRIDE_REVIEW",
+        "UUID_LITERAL"
+      ],
+      "sha256": "95c6ec9f4368ea88153ea72db3a31184afc9740bd2bb26b7fa5726dcbdd51850"
+    },
+    {
+      "path": "site/app/Services/GardnerCommerce/Prices.php",
+      "codes": [
+        "HISTORIC_PAID_CUSTOMER_OVERRIDE_REVIEW",
+        "UUID_LITERAL"
+      ],
+      "sha256": "b65d9aae270d9ba9a9fba4e88818c59092fde7aa47b7eb9823ae4fcd6e9e523e"
+    },
+    {
+      "path": "site/config/gardner_commerce.php",
+      "codes": [
+        "BANK_PAYMENT_LINK_LITERAL",
+        "UUID_LITERAL"
+      ],
+      "sha256": "b95172085f4bbfe3c2fe0548dc9c99caf317510124733f85a914fdd0ab338de1"
+    },
+    {
+      "path": "site/config/mail.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "d01099b48307738747aad2a01e82da0b01eb515a31703b44f711b56081d17016"
+    },
+    {
+      "path": "site/database/data/legal/legal_representative_consent.php",
+      "codes": [
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "1cc6e70ef1861061a2b34c29e49094ea25351163df10abf2d67f24b8b5adc6fc"
+    },
+    {
+      "path": "site/database/data/legal/public_offer.php",
+      "codes": [
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "a9be92a42e7762196caffa41446176e399cf8a35461cc18ffc7532831e655c89"
+    },
+    {
+      "path": "site/database/data/legal/user_agreement.php",
+      "codes": [
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "f402b4bc52d2f4d4cb2388cbbb47cac662485cbe870f0fe045024cf4cbaab330"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/arrow-path-rounded-square.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "5a1f912c3d5c2fecd037e856488f422b5c715958ffc5e62971a7eec762d57fe8"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/arrow-path.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "8afa23d7238d854b39f35a9dccf58ead933011a795e0c42a832354723508ad1c"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/arrows-pointing-out.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "6b98abc4429d2372e8cd1680ae7b0f0b011a3ba8ce430ba69464467bda2dfc3d"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/bolt.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "d4668132ca02dc0248988dd5ca64293bb7bf7b68f3e16f9ccf9df5de59eaaddf"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/book-open.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "98ed347a0d1d669c9e97fac383c578bab2a34c7522e1f593d1308bac82548c7e"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/bug-ant.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a97372b2d222f0f7716327f3dc5d0f3699a2edd9bd349dd0806806cd34be7c8d"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/chart-bar.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "84973c096aeea0253e34ca767c0d967c5b0e99b111676379af73ead3f1017b8d"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/chat-bubble-left-right.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "970ec1d4764cb6e255c9b261701dfc8163ed832f710abe6ca2b17d83d527d7eb"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/cloud.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "246cc552b84c2397fc89e7245d591ed4f5ae2ed4b21fd6e16c44bb94f6596854"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/cog-6-tooth.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "823659c6a69345ab0d2be39da51372f012c313d7f21e4207ff80085501af62b5"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/cube.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "08abc4f3ecdbde4f8e3942d7344372d9151a9d89061f0c471b8fe1b6c565e026"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/face-smile.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "824126d6de791d8f079bb51a17616f4754f176a4ea4301040de41ecc1d1e8472"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/funnel.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "c13b0f60278e1407b75ebece67bda630831b285a75000a1091912a2ffd832ba0"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/gift.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ce46cd0e5a8d74c877a04f43385c5ff076b7049d701ba5b455892273b039269f"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/globe-americas.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "8cdcc0dafae0aadedccb40fcaa6edfc2492fe16d20f16a0465da7d010dfbf205"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/hand-thumb-up.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0b438ae3654d7ac46f2b847af32e42246329725ae5a9b60fe5b433822e6dcb25"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/heart.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "3e167de3da743d1fe534e1394a6b9eee1c88be92ae512f18328bf4af7f84d709"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/light-bulb.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "72115e47d968ffaaf2c7fd2a1305288f8f18cd070c7a446d5dfc23be10d5dab7"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/map-pin.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "013d2eabea38ae5ca7a98f6ef21732e649c03f2dac3508383b5bb9985dcc3762"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/map.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f31c47e03ec8528ad0763384be4d24b096a4d1953926c533e9cddf8f97210d3f"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/megaphone.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "7a2417c734d9ac4929e79ce4a60f15ef949c061e3ae3b2fc1c20c8a93f45cef7"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/microphone.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "21cbe7932fda37b0d399097f00fbf1165ae46c10c21b8014c3e6ac5d05336ddd"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/moon.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "260111b9f445abfe11e937f7b741604f752675dcd42babe0f0239f3c27e04d1a"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/musical-note.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "78165e62f8da939832babf9846be4756b79df4b7d6729f7410ad09db0bcedf98"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/pencil-square.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "8ca77d5abd5c71d60195fc0dbcbace31cae19f93920c3dc8eb5a6dbc4249e13c"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/play-circle.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "b4734fc2d9f53268b2d43d7a9509a5d500b9c6b7db03cd93a85eea8e6bed6c14"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/puzzle-piece.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "924e458a3548d0465790741e7f2886630586070fbc5ca7a1f155be850289c51f"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/queue-list.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "7b1886b1b98c99850bc0d87a1ac6aa71bf8028d25b1ea0bd5a7586cab16250a9"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/rectangle-stack.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "b79752a4e02b0dbbb4e81ff1027d405451afb6c656393323f4d618d346f9bc39"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/sparkles.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a78921f2c2bb33d92f51d8974a1c47114f5c0952b946d59b11cbcace65724155"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/speaker-wave.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "da50ea455a5fba7b4afca1f8fd1297b07bcdb598ed85843e056d0607a7efd5f1"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/squares-2x2.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "722da9bff03be82934aa57ba3f3c42a690e945256141cdb3de41f62d805ecdba"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/user-circle.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "72d0457b53c7149ab832e920c0a40417d1643ff4dc88288520d492d4898721c9"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/user-group.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "964952db665e9122d8e37ef851e1972cdf0107d4b3d2e16123887ca712510acb"
+    },
+    {
+      "path": "site/resources/gardner/illustrations/users.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4d3a1f87f75f4617c27f02059869269c9e68f6a647a840196d3efe181add5506"
+    },
+    {
+      "path": "site/resources/js/App.vue",
+      "codes": [
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "4f39d24ee440b7b6a5cf90327ea2d9dfb6aad21da70525976280548f33aa124f"
+    },
+    {
+      "path": "site/resources/js/components/GardnerRegistrationForm.vue",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "f4aeb76e88055a471a229e5cbc2b8f78333fc8bb6a17f6f73890a4dbd9590cb9"
+    },
+    {
+      "path": "site/resources/js/components/TestRegistrationForm.vue",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "6a2372bbf2f8ac2150cf979cd5034809c798cad0957ae82d7383fccf417c910f"
+    },
+    {
+      "path": "site/resources/js/components/landing/LandingFaqSection.vue",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "8fa440a21f5873275eef278776ec3b4d27f9c4fc1b6e476b37b2ca800189ca69"
+    },
+    {
+      "path": "site/resources/js/components/reviews/ReviewSubmitModal.vue",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "131e48e76c54e0380d6d92c831e37c5ecee9c11bf814b212c6a9637a284ff964"
+    },
+    {
+      "path": "site/resources/js/fixtures/demoChildrenResult.js",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "158160162b1078ce410adb0795d3e17661fc0c655bc6ec2256fe4448ee3dca59"
+    },
+    {
+      "path": "site/resources/js/fixtures/demoTeenResult.js",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "9063d39efe32c4b8a04283707ae7c8c82b0ed9e20a2a5d9f5bfb79fcbe557451"
+    },
+    {
+      "path": "site/resources/js/views/TeenPaymentSuccessPage.vue",
+      "codes": [
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "064513411adfdf5fb3d81cfb28d18970bc665cd00620b72febf118ed22cbd77b"
+    },
+    {
+      "path": "site/resources/teen/career_catalog_approved.v1.json",
+      "codes": [
+        "UUID_LITERAL"
+      ],
+      "sha256": "ba97eb605f11e64cc3a462a19015903e5f00ab76587a89c3771ea200fc572199"
+    },
+    {
+      "path": "site/resources/teen/career_research_index.v1.json",
+      "codes": [
+        "UUID_LITERAL"
+      ],
+      "sha256": "2dc8d332318b907262810e18907fd50f9dc2d3060f39ae23b2d5f902ff402dbe"
+    },
+    {
+      "path": "site/tests/teen_pilot_job_policy_test.php",
+      "codes": [
+        "UUID_LITERAL"
+      ],
+      "sha256": "d0438d5d001d67dca7480f593723e103768a7ac6a21a568f67b8cfff2eb171e1"
+    },
+    {
+      "path": "site/tests/Feature/ChildTestSubmitIntegrityTest.php",
+      "codes": [
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "a10b4c6ad899b4a97d622f8a8068df1d340db8107a94f5a819e73d79590dffb2"
+    },
+    {
+      "path": "site/tests/Feature/ChildTestSubmitRateLimitTest.php",
+      "codes": [
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "0e046266c7b915aec8a3b642a6c51fa2ec71a973623db3dd793d91321f4c9834"
+    },
+    {
+      "path": "site/tests/Feature/GardnerCommerceTest.php",
+      "codes": [
+        "BANK_PAYMENT_LINK_LITERAL",
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "bedba5553e3e29589fb834c99a7c2033c9bd50796f267b330f1cbe11409270e8"
+    },
+    {
+      "path": "site/tests/Feature/GardnerServerIntegrationTest.php",
+      "codes": [
+        "BANK_PAYMENT_LINK_LITERAL",
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "ba7adf2d33fc76a4fbbedb3ddf184e16d20b1c7e7fe5594f482fc18569008ec9"
+    },
+    {
+      "path": "site/tests/Feature/GardnerV22DeliveryTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "bae3c68fe3d1ba905879661b1e3eca99f5be60e10ee4033845398805f8c429f0"
+    },
+    {
+      "path": "site/tests/Feature/GardnerV22FreeWorkflowRegressionTest.php",
+      "codes": [
+        "UUID_LITERAL"
+      ],
+      "sha256": "09e9043f8a657ccd36f14c8d68cc04a5e9a73a022215000c8a5834e71a6f81b1"
+    },
+    {
+      "path": "site/tests/Feature/GardnerV22PaidFlowTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "320232f99211e67e3fdc91ba6902bd058ae977fbea989bd2ba8dec53a57548e8"
+    },
+    {
+      "path": "site/tests/Feature/GardnerV22PersistenceTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "0aa276b252f10fb67e645f374b587ed13ee6db38fcec43336b17b23e3ffb2a4a"
+    },
+    {
+      "path": "site/tests/Feature/GardnerV22PrivateApplicationTest.php",
+      "codes": [
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "f3a4466810ffb39c41872c0fad501e0c15a51700f0416c1599e19c331b279758"
+    },
+    {
+      "path": "site/tests/Feature/ReviewsTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "d832035d57696fb4c4511a5e00fafc4f73589307018925ca03d181c580840f33"
+    },
+    {
+      "path": "site/tests/Feature/SmartCaptchaValidationTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "b066bfb0506aec837d38bc4853d1df670ef13c5612a5c13655e1f5f42088f1e7"
+    },
+    {
+      "path": "site/tests/Fixtures/DrpeV2/case_20_input.json",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "49a31c0893ce6b72b8dfe282bb3ac0b87a2eb70715586dc25a96fdd35dc00077"
+    },
+    {
+      "path": "site/tests/Support/GardnerV22Stage210Fixture.php",
+      "codes": [
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "2dd90fafbaf37342c64c3d00e46997f7fbc2497001153a1a84595c5bcd2f7c38"
+    },
+    {
+      "path": "site/tests/Unit/Children/DrpeV22OptimizedProviderPreflightValidatorTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "88b7dc6e99f693677de9c58ddf0c0a8f811aeed6183754e550f955758143e34e"
+    },
+    {
+      "path": "site/tests/Unit/Children/DrpeV22SynthesisResponseValidatorTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "PHONE_RU_LIKE",
+        "UUID_LITERAL"
+      ],
+      "sha256": "1ca70a4a4eb891982b23716fe648fccde2972d2c45f7ddf854c491fef15ba5bd"
+    },
+    {
+      "path": "site/tests/Unit/Children/DrpeV2LlmBoundaryRuntimeTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "UUID_LITERAL"
+      ],
+      "sha256": "b66da849b72684a76d9c516d4425b0ae4b8dd9368d57f52a45d17edc81616493"
+    },
+    {
+      "path": "site/tests/Unit/Children/DrpeV2ReportHtmlRendererTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "0a265ca43644b1fef9bcce06d427a390d677188363f9b069960f62f707095a7c"
+    },
+    {
+      "path": "site/tests/Unit/Children/GardnerReportViewModelFoundationContractTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "0de481c2665794071a9dfb1d8b03304e11eab91a641d304ff3fcae66d91371cb"
+    },
+    {
+      "path": "site/tests/Unit/Children/GardnerTypedProviderPipelineTest.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE",
+        "PHONE_RU_LIKE"
+      ],
+      "sha256": "aa6cd3e83e62bb953d94ac4ddf638393e5ba339fbd4f261204cb5639d2017454"
+    },
+    {
+      "path": "site/tools/gardner/cloudru-qa-20261031/browser_ui.mjs",
+      "codes": [
+        "UUID_LITERAL"
+      ],
+      "sha256": "82f1ea1774f4cd955bbb5eb9a5be848519b41a8539f3100b1c0333aa61710f00"
+    },
+    {
+      "path": "site/tools/gardner/server-integration-20261031/booking_race.php",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "d8ef24ffbe0005342792baec319b93036d2f9af3e755682dcaa88584c7867ae4"
+    },
+    {
+      "path": "site/tools/gardner/server-integration-20261031/http_router.php",
+      "codes": [
+        "BANK_PAYMENT_LINK_LITERAL",
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "29272f1e5f3b4ed5d3024dd2bd35f0c46333f85f0759c2d5f901dd06d58ff685"
+    },
+    {
+      "path": "site/docs/integration-2026-11-01/FULLSITE_INTEGRATION_REPORT_RU.md",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "457f55db545bbd4d8357ce6c3f7b2b3ae27addd83618774cac01289c15a23f5b"
+    },
+    {
+      "path": "site/public/favicon.ico",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "site/public/hero.jpg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "e9f5b7daa71c885db0c30e936a61793e3f84c25b5a1c4c3e9be3964b59c48a59"
+    },
+    {
+      "path": "site/public/logo.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "b7e1f424c39d27d0e10fcf8c9260bef1038bed98589708fbe67be0edb9c999c2"
+    },
+    {
+      "path": "site/public/logo.svg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "8a9fd58af48bc5f53f3b25095c04a366dc857cf2dff3d1519af9b3accf6e7bd0"
+    },
+    {
+      "path": "site/public/max_logo.svg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "63f904f90b49b4265ca407684ccb9e2b2dc14de50f187208d07a6bc344e2c9a7"
+    },
+    {
+      "path": "site/public/og-cover.svg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f873ebefd66c1ebb889b4418b18d6de91a51a2696d8773f60f6ba76fd521691e"
+    },
+    {
+      "path": "site/public/report_bg.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bae3848a8d0b62cfa0fce07d8f41e984453a22a5083ae64d622227119a9036a4"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/activities.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "6420d37198e62d28c702e36d92dcd25f085a75572f6a3e3f8684a39167ec5dcc"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/autonomy.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "06914de9ba731d0f7d74a2cbe528fe90b4691a71ed5a0360a16db0e7f0bb4d3e"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/career.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4cd8c41ac1c303de20b15e66b691f708a529ec9a6f39ac1151ca232e973e03df"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/circles.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "49cb3b7e1400ad8bc7fdb3886af643520d18a9cea8ec8669d8acec5afe447dce"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/future.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "40eac93b630489d08e97b4ef77028805bc3a979597d7f4f4d75ab89ec23df07b"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/homework.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "67ac3fd9e318e4a669c049f9ceaf783ac3e744ab8014c9faacda7d1da485d063"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/logo.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f4666cad5ab69ac48fc6c56c24bfdbb41c391cb87e024f123e9d4f5756532b6c"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/quit.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0847e3a03073c778b1ada8341b540a1d62b6d256ca36cb45ec4a78947319e04d"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/report.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "7e0edbd4109bb2a9b0148ecccf3f875d852ca4608023712cddbdb2884c0d579d"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/team-11.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2b7d5e990f21c2a12bce18fc9cb3a974140782346b9e069c4403153482c5d7c7"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/team-16.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "26f86b55021dee0b8e9e8fb199c0567932e3d30d80e5dfad67a85939ad18765f"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/team-21.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bd813071d0c215fb5dc001876a57a2a440195d52770ec30ba6455c9be5973b70"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/trial.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ca4c34f46bafd6ce9c6e3a1d98d5260829ddd1a637344d10001d0780a21bb30b"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/fonts/Caveat-Regular.ttf",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "5208ee91ad6db79344960839fc3e23a1d74c463ff19622230e6871169c831160"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/fonts/Caveat.ttf",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0bdb6b660482d31531b3945849fba5916b3ef8695da7024a9e6b9ee3c4157988"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/fonts/Montserrat-Medium.ttf",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "09e0836990f35b79229253d01b8478da5dcf16062f9db056385aa217284fdd64"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/fonts/Montserrat-SemiBold.ttf",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a303d212ec367f065abaa13700e11df0e218326670c3bf44da81802458361f45"
+    },
+    {
+      "path": "site/public/dz-guides-v1/assets/fonts/Montserrat.ttf",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+    },
+    {
+      "path": "site/public/favicons/apple-touch-icon.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "462a3affb3c370640aa7343a964948390cdf96a9f159f241506bdc9789efd88b"
+    },
+    {
+      "path": "site/public/favicons/favicon-96x96.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "7a9598fc6a60ae75f2dbeed3bb4dbdc231c8a5728385f918f755e200e42ef771"
+    },
+    {
+      "path": "site/public/favicons/favicon.ico",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f2015c50e64cd7c219924bb96760b209e6394b507682656f0b5e2244a0948570"
+    },
+    {
+      "path": "site/public/favicons/favicon.svg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "c530925e221528ecf3cbb611887826b6f0cee94cfe8b19adcee8d1fa65b67a7f"
+    },
+    {
+      "path": "site/public/favicons/web-app-manifest-192x192.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "6a1a86cd208236fe9639396ca0308bbf3449b5e9c63c70fac7ebcf387c302010"
+    },
+    {
+      "path": "site/public/favicons/web-app-manifest-512x512.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "31bbc781a7b512567a176c05da00ff5bdb960f6b6f711435870b25cac40851c2"
+    },
+    {
+      "path": "site/public/images/1.jpg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "49549b841351e7e015a6e2fd42649618fa8ae5c31a26360f38fa0a56f6ca65e3"
+    },
+    {
+      "path": "site/public/images/2.jpg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "b725b74b6c56ccf44f13185d1aca176090782aa267ee3ac128382078a8eb570e"
+    },
+    {
+      "path": "site/public/images/3.jpg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "84d1088e2933b077b887714cb8bfa97a9ec3953d0d5e388308ada48e6a65533d"
+    },
+    {
+      "path": "site/public/images/3.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "481d131a5a0dcba848a18d8599dd366c54f99024041c073fc252bfcc5592d1fe"
+    },
+    {
+      "path": "site/public/images/4.jpg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "628c14fbc36d7b8699d45624b2947a3487010b2bb531310bc1a341bd5b81f613"
+    },
+    {
+      "path": "site/public/images/4.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "7034d615fd59c6031a687d909e7363592636f4a68f815f589611f43336fda228"
+    },
+    {
+      "path": "site/public/images/5.jpg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "04040cc00fcf224926e35302d92ceaf399561d19bfb674de5b527a50b478e2ec"
+    },
+    {
+      "path": "site/public/images/alone.jpg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "10bb8dd29afe032fd545de91eaa7489a3de4cae89d7707d1edb9259382ab2d68"
+    },
+    {
+      "path": "site/public/images/alone.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "d8401206c161223dc5007c69ccf20524649cd3af7fc62fe72a56c1668a343b81"
+    },
+    {
+      "path": "site/public/images/capybara.svg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "9f28754027fd876b90f203a467ce8b1d8eaa680243cf219f85a526c44c79798d"
+    },
+    {
+      "path": "site/public/images/hero.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "9ac9b4de20c75946bd1c4e12e35d8e600e186b8ab83158960e432776e33cb530"
+    },
+    {
+      "path": "site/public/images/hero.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2730ca7dfbbb491e8d3e4c130d2ab33e843f6df0653a6e79e310a899f9261228"
+    },
+    {
+      "path": "site/public/images/hero_mobile.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bbc28da74de7ed5eedcb1809da2c57b7e7fa62250bff7d1987ae5f7af96d5d09"
+    },
+    {
+      "path": "site/public/images/hero_mobile.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "618033cc87487a89646127af15b3fe1fa6fd45b24c29eceb47d23c14b85d6459"
+    },
+    {
+      "path": "site/public/images/real.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2335e85b7d98758f1e3ce36aa1503eed2001c9ca776126cff7581af304cc9199"
+    },
+    {
+      "path": "site/public/images/together.jpg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "c8f8c295f0c68796724728f9e11be847b6614a9a1f37c0ff0c6633d059f82955"
+    },
+    {
+      "path": "site/public/images/together.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ba88a06e16b80f0c6c4a9dfdc6a350de6e5e62120b8e616e96b70d08b91f4d35"
+    },
+    {
+      "path": "site/public/images/children/alone.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "c981fb5f002225829efc654301830e0e616b7d251e9c7e7acfb960b3a2cf68c5"
+    },
+    {
+      "path": "site/public/images/children/boy_with_phone.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "fdf2d80d7e5b860415000dc2344f57e4daba58858a4dfaba3af27aea56ae3e8d"
+    },
+    {
+      "path": "site/public/images/children/card_1.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "718c71557ae705ff5164d9b68958b9da3f93e79192bd65c1188160991c395034"
+    },
+    {
+      "path": "site/public/images/children/card_2.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ccac193bec78def9e1c3e0cf177dc9d1506272b21aaa19fe239f9f95e1d82586"
+    },
+    {
+      "path": "site/public/images/children/card_3.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "b9d7f6bb11a10f0c2304930de39312a72475c8dc967362a23c2eb027b55219ab"
+    },
+    {
+      "path": "site/public/images/children/card_4.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2b5845f9823459e8dcee831cbd0cc80313d09fabde8d18c2b62d9f717a38be27"
+    },
+    {
+      "path": "site/public/images/children/card_5.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "950df5127af5a399b27de9b277e20254843f5bb8b0f32946509975616c45edfc"
+    },
+    {
+      "path": "site/public/images/children/children_main.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ecf6b6ebee19329393b8af793b2354e16e994e21291ca0ecc805648515327671"
+    },
+    {
+      "path": "site/public/images/children/mom_answer.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "fe4f92c2cc6ce0f064bab4b477c27f454df7949bf8deae15442994ef3e0c6c76"
+    },
+    {
+      "path": "site/public/images/children/real.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f7448ed0c703334b5e424efaaa70c443ebc0090ba513a21f7db941240b076f31"
+    },
+    {
+      "path": "site/public/images/children/stage_1.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f7496d4251ff0ed480a1a687d9f61dfc5b70dd776058729c849d86d17d45bfd3"
+    },
+    {
+      "path": "site/public/images/children/stage_2.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "9a08476b4766b6479ca4e9ffa1d27d178b7dec79e58b8e418202adc78307fb10"
+    },
+    {
+      "path": "site/public/images/children/stage_3.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "26277d2b3502a8c2945c4df71cb49e966dbf5204afe8121b1388f0d5b96a0fdf"
+    },
+    {
+      "path": "site/public/images/children/stage_4.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4aeda2f530802224c9415d521b0d04bea9a478c9d91241ace3e597f37c498628"
+    },
+    {
+      "path": "site/public/images/children/together.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "d4fb626b943300b05b21e664e988b9eac0bb4d7e31c34177b9f7124b8b62d58b"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page0-img.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2e18cd99eec385ce9544f9b453607a3ba3dbd8b960d2c89b6bec8810770f2786"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page0-img1.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "9270c7b023f61b89f774d2081e8ab4ce74a331ea07b4916e7ae89481c72241fc"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page0-img2.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ec6e3161266a7e007b52b1c14309d285b1a04de3705fdb1a7d0de7ef5b0c25ed"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page0-img3.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "095ad4588b8b7e4029d747a5ab439ee25f0cab7edc77658e6a2531ba8abb5b55"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page0-imgMedia.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "729535a510b860bc9c3d395d468e96b8c1c2d6d086c770fab31b6507caa84801"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page0-imgMedia1.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "3f489fbd8bd85b641de0bf949b60f4af81bf39db1867eeb817311751d96e3dfe"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page0-imgMedia2.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "7d10b86a134b75f00b2a2f8ce22482cd9df5219a697574b203b25f0779f508e5"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page0-imgMedia3.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "cd627e813e68ddf11315b435f8ecb06cbdbf21248bba3c1571381807aaa4ca16"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page0-imgPng.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f4666cad5ab69ac48fc6c56c24bfdbb41c391cb87e024f123e9d4f5756532b6c"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page2-img.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "729535a510b860bc9c3d395d468e96b8c1c2d6d086c770fab31b6507caa84801"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page2-imgPng.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f4666cad5ab69ac48fc6c56c24bfdbb41c391cb87e024f123e9d4f5756532b6c"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-img.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "729535a510b860bc9c3d395d468e96b8c1c2d6d086c770fab31b6507caa84801"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-img1.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "089de1192ac8433d4e23dbb919323e5b1d28afeb676fb75639cfe62ed732fbdd"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-img2.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "cbfeafcf05d23f4034bcc33e7edce9e8e0c47a4b515c102a9a070823af7b39ea"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-img3.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "5b00923db94da9e18f186613b48bbefac0e59cc0d2a0ffaa2e92dbf35e0c72ba"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-img4.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "8f4a5c0a410df26c62fb68e0cf1eae067107cfe992c25b5cc28005f12b7666d3"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-imgFrame.svg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "be0b063d153dffbfd20929ac00a3b1265a823830cd7d497acd788ffececb196f"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-imgMedia.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f374aa29e8bf0ee65e1477bd2a35fd3caac0e3aaff4c7d47708e1e6612053735"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-imgMedia1.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ee3401817a9c90ef60bc5f769a35e68b2a2880c173db119be877aba23a270080"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-imgMedia2.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "7a77bd8c0910192dbc26bb7710c978a540fc0d2234b55b3a2b8507cafd0a7532"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-imgMedia3.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "3f489fbd8bd85b641de0bf949b60f4af81bf39db1867eeb817311751d96e3dfe"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-imgMedia4.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "7d10b86a134b75f00b2a2f8ce22482cd9df5219a697574b203b25f0779f508e5"
+    },
+    {
+      "path": "site/public/images/dz-20261013/page5-imgPng.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f4666cad5ab69ac48fc6c56c24bfdbb41c391cb87e024f123e9d4f5756532b6c"
+    },
+    {
+      "path": "site/public/images/dz-payment-success-20261105/family.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "784237e7528632d33d7b9b881955a263f60d154ee840e3ff51634fc356d46111"
+    },
+    {
+      "path": "site/public/images/dz-teen-v1/chosen.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "1b266d7b6d29e01d13c806ebe9d2d523c08fc71c50c974cd5183634d1b23ddca"
+    },
+    {
+      "path": "site/public/images/dz-teen-v1/family.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "413a88372e1dfc422d3130177ec4767b081ea156d820db70023fb41891b7d9e5"
+    },
+    {
+      "path": "site/public/images/dz-teen-v1/grades.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "30f18bbfeb13799460e7c6b89f9abe85d873b6d566c39c70d99d81a061437c3b"
+    },
+    {
+      "path": "site/public/images/dz-teen-v1/hero.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "1fc58b52bce720b6a72a81bfc8e1418f3622ecb69872b536fd48b92e1a6809c7"
+    },
+    {
+      "path": "site/public/images/dz-teen-v1/logo.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f4666cad5ab69ac48fc6c56c24bfdbb41c391cb87e024f123e9d4f5756532b6c"
+    },
+    {
+      "path": "site/public/images/dz-teen-v1/many.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0bd99de6c4fbbea7bb1677c82c2313357073adeb6e033fe747d8a50b0e9014e8"
+    },
+    {
+      "path": "site/public/images/dz-teen-v1/parent.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "8119e7b55ab7792df1c26fced6f9917e6ac4bfe506ca4623dc9c39c154dd2637"
+    },
+    {
+      "path": "site/public/images/dz-teen-v1/report.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "e15b5c9609b882e8fee7565e25e5edff575e051cbeb4b9a43267251d0d5973c4"
+    },
+    {
+      "path": "site/public/images/dz-teen-v1/teen.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "25ea14498d64fa8effa69ba88ca3f3e6885c6583711c716552be92c38a7e8df1"
+    },
+    {
+      "path": "site/public/images/dz-teen-v1/undecided.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bad719ae8b5ff7954e3a9dd977ab74634fb3fd115407ae702a398a32bdbf2c4a"
+    },
+    {
+      "path": "site/public/images/gardner-consultation/brand.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f4666cad5ab69ac48fc6c56c24bfdbb41c391cb87e024f123e9d4f5756532b6c"
+    },
+    {
+      "path": "site/public/images/gardner-consultation/checked.svg",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0beab69c79b8b4a50e5f6eea7c2c92d9f193bc50fbfaa3fe390a95fa4c7f68c5"
+    },
+    {
+      "path": "site/public/images/gardner-consultation/specialist.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "273aaab0b4dcb0e40016ae25614d8329e97411d18cef45013814dfe9ec0f4b93"
+    },
+    {
+      "path": "site/public/images/homepage/boy_with_mom.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0412fa9aecc65011de4e510c6753f0466d190dc2a920d61348ed2f686392cf0c"
+    },
+    {
+      "path": "site/public/images/homepage/homepage_boy_main.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "368557eaf51c396ccb6702655239ad25e0125d086e1275c3fa25e395e3119df5"
+    },
+    {
+      "path": "site/public/images/homepage/homepage_children.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bb5e9521e845a505137248e730267c0ac8e0df92cfe700b644915e9e3551b7f7"
+    },
+    {
+      "path": "site/public/images/homepage/homepage_girl_main.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f905cef278bd431d2797e59c254cdd01547b853c397c039503a8b8337df0f7dd"
+    },
+    {
+      "path": "site/public/images/homepage/homepage_teen.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "cc70b2cc7029ad488c4d97e3daf34ac1d90830345445d092956842e102e27836"
+    },
+    {
+      "path": "site/public/images/homepage/tree.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "3241a13643fa4002cd28b683154b1367864c06ca64f7230ebec743a4156768a1"
+    },
+    {
+      "path": "site/public/images/teen/answer.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "d69576269cb70450487aee2e777e43a4ead9ea732d3082ce73de8e36db8771cf"
+    },
+    {
+      "path": "site/public/images/teen/compass.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "682d076aa8842ceb9b5f5faadd5322d55a8cdf88b40427f74437012439e7731a"
+    },
+    {
+      "path": "site/public/images/teen/graph.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0a1f2a111f0fe3550db444ce922a69d03ff42a41bfb0bfbe6c8952e04ea7e7d7"
+    },
+    {
+      "path": "site/public/images/teen/icons.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2fdd68f618fc23dcdecabec804da5b13b1978bcff753183039efdfb57a5fe47e"
+    },
+    {
+      "path": "site/public/images/teen/note.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "c36bceaeb6d50221452bd5ce5b83fd08df6adcf1e75cb5cb545289db3f82a84c"
+    },
+    {
+      "path": "site/public/images/teen/optimal.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "5c77278685bd4255a784c9426ac643652dfe2038a8684c5c41faa88138c3bdae"
+    },
+    {
+      "path": "site/public/images/teen/parrent.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f5a1c9d67574abb84eee3ae52a5a62d67500e45900f3a0a258bdde3a7075c70f"
+    },
+    {
+      "path": "site/public/images/teen/personally.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "99fff32a129ee6cdb6593cc5db2bb073a4c4f98132ae428b7024284e20ad6d1e"
+    },
+    {
+      "path": "site/public/images/teen/queue.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "3fc8364a0a3875c5b12ce1de341750c311b5938021847db523a9e20e2965b6b9"
+    },
+    {
+      "path": "site/public/images/teen/search.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0aca55baf2b77b73c74e6b5d5ccb1fe264feff982eccf191362b360ae625ad70"
+    },
+    {
+      "path": "site/public/images/teen/teen.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "54996ba299fea34eb4ed2640ad41b9c3591f59ebd09a7fff13e7d2e276f58f74"
+    },
+    {
+      "path": "site/public/images/teen/teen_main.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "e830e8ec9b055d1f0958beffb8ec46af6c9db3129529b16db4de12a9e44c884d"
+    },
+    {
+      "path": "site/public/images/teen/visually.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ced7f4108b12c376159bd728678b9332925f07fa6a4f00cff9477cff8f026849"
+    },
+    {
+      "path": "site/public/images/teen/image 20/A.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "e7926513efbfce12ad0913cb52daae478afd7fef6099cef876ee4a5147aaedef"
+    },
+    {
+      "path": "site/public/images/teen/image 20/B.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "d7318e9f44790171d8e812bfa205c5d7db78ca7df15cb4f531b7c4b71d0bd08a"
+    },
+    {
+      "path": "site/public/images/teen/image 20/C.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2e6088d43bc4285a85efe6b84fd7f3e236828516730c17e65240ec1dba411ed4"
+    },
+    {
+      "path": "site/public/images/teen/image 20/D.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2885ddcec85fea74a44e304b533752217c58e9ad78c74a38dbce11fd02528289"
+    },
+    {
+      "path": "site/public/images/teen/image 20/E.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "cbdcee0d04d28750f92e958099f16383f24022afc4739cf90e7b8e1111dd1caa"
+    },
+    {
+      "path": "site/public/images/teen/image 20/F.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2dbf6b7b9902dd0b3abb4beb3b08f76b995e00b3a5b9668a57420aa5c24d67ad"
+    },
+    {
+      "path": "site/public/images/teen/image 20/G.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "8819e0cc7e26d7aa05cf52ee84b9ad5e0caf031615504459e3cbaa5829ad9bfc"
+    },
+    {
+      "path": "site/public/images/teen/image 20/H.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "05847511bdae8ebee97b6387d0fc6bba70a9c8166cf50cfcdb3b44c78da3e008"
+    },
+    {
+      "path": "site/public/images/teen/image 20/I.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "e4b044c629bb298731f655876fc390b5dd5551fa3f45c54e8e27dd1f5f7bf87c"
+    },
+    {
+      "path": "site/public/images/teen/image 20/J.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "81ede3df298f5768fde82464e19aac10ede19b4181e46fc430e421f3fad17528"
+    },
+    {
+      "path": "site/public/images/teen/image 20/K.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f0368d06100e4ad5d435c3aa34d6e602986fcd9664ef502d3b48fedbaddc3aff"
+    },
+    {
+      "path": "site/public/images/teen/image 20/L.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4bbb766dfdca42772d87bfb910ae2da263002df56030cac40138f04c98524216"
+    },
+    {
+      "path": "site/public/images/teen/image 20/M.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "77c702264dbabbf848df24ae05811587c9e8fbbf842252e26b88fb9e7025db54"
+    },
+    {
+      "path": "site/public/images/teen/image 20/N.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "dab65d4a575b4777cb125157cbcc1abedd64bb0c03de9b493521256a5601df2d"
+    },
+    {
+      "path": "site/public/images/teen/image 20/O.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "7f5584ffd995c56bda1bfb69ec1584d0959c115f428410ae919a81f4456be4b8"
+    },
+    {
+      "path": "site/public/images/teen/image 20/P.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4329e8e6ce1aa58bd096f8279a38b66403742475e91d2cf3c37d8cca41a268cb"
+    },
+    {
+      "path": "site/public/images/teen/image 20/Q.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "6d2d93e53f95d3d94a7f23b65182b01d68085174c91660fdb46c07e05217f608"
+    },
+    {
+      "path": "site/public/images/teen/image 20/R.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "eb451d9671b2441c365ddd6c607ef7a2778e5d0b578d23a3a502d006e497403f"
+    },
+    {
+      "path": "site/public/images/teen/image 20/S.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ffc4cc0233b5934b8a5a2d85b6bc2d40bbbe4fb74c15b44bbe641197aab0e761"
+    },
+    {
+      "path": "site/public/images/teen/image 20/T.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "279dfb856a3882cf797a457866cf45fb5ca1fb9846b601138cd21fd6082423e4"
+    },
+    {
+      "path": "site/public/images/teen/image 60/A_21.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a4ac021ae1ef339d0dd1d0923c859d919018aff4f0a7b8956db3d3ba650aa9a7"
+    },
+    {
+      "path": "site/public/images/teen/image 60/A_22.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "92b9aa9440bb9b2358ae3a8a0a81a9a1ffbfc875b5f3a16250d8ccbe594b1122"
+    },
+    {
+      "path": "site/public/images/teen/image 60/A_23.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "5d09409c4f0e16a32b2e4c3ef28bbdde29218ba2a3efe8428562e4114bec002e"
+    },
+    {
+      "path": "site/public/images/teen/image 60/A_24.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "36e2986d5d22d799158d0003815391774fe67c7a7f243cb2845d3d9f93d92be7"
+    },
+    {
+      "path": "site/public/images/teen/image 60/A_25.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4ed9439876835e5c3983ccb0ca6cd2a6452ae4064d28cba478afae15ba81c340"
+    },
+    {
+      "path": "site/public/images/teen/image 60/A_26.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "d7c8017607f359f68b68e0715808161bf595a7a7bd8d1c21cadb4fe3627382b6"
+    },
+    {
+      "path": "site/public/images/teen/image 60/A_27.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0f7bfec2cceaaedc9a8824f1a21a497aad38c50575bfcfb6a09805137888185a"
+    },
+    {
+      "path": "site/public/images/teen/image 60/A_28.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f8bf975b7fd6508a7bd5e76534e981dbc5ebf0fd57ba5a34c5633c59cbdc8c89"
+    },
+    {
+      "path": "site/public/images/teen/image 60/A_29.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f4dec9c7893dca75078335d761593fc30959cdf448b0702204398a3df21913bc"
+    },
+    {
+      "path": "site/public/images/teen/image 60/A_30.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4a25b8d7a79fec9f9e62bd58373a0f98efafbee281f3e87bd8a978674b9dce5e"
+    },
+    {
+      "path": "site/public/images/teen/image 60/C_51.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "070312cd2382ebd9c76dc29e0dab9f66db73be4e08d1e386c870e2de9ad7dff9"
+    },
+    {
+      "path": "site/public/images/teen/image 60/C_52.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "3b8af8dfa82005357884bc467266e486ac24065567946f78fb002346ffe59b62"
+    },
+    {
+      "path": "site/public/images/teen/image 60/C_53.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a9fd36b47989e421b7c4a2a2634ec258355b550a646fbc4b1dd71dcadd20ab74"
+    },
+    {
+      "path": "site/public/images/teen/image 60/C_54.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f678a530bf1bcc1ba9387973042bdbc15637b83b2feab013589722b8552425c8"
+    },
+    {
+      "path": "site/public/images/teen/image 60/C_55.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "c05127155033385ec8c9eac48be56b5218e2349a50a6fb695c4f7aa40636ab31"
+    },
+    {
+      "path": "site/public/images/teen/image 60/C_56.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "666a44b62ff58dde96e2da87a25108e317a4a50084f1f0013d04bd25463225c6"
+    },
+    {
+      "path": "site/public/images/teen/image 60/C_57.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "fc628b4137a9b52271d2c851e130437db1dd04543a90c828a2f8da744f93f1ce"
+    },
+    {
+      "path": "site/public/images/teen/image 60/C_58.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "8167aa07ba670a46a6c37ceae5a83e4da57a05ceec647256afd53b7d830db4ef"
+    },
+    {
+      "path": "site/public/images/teen/image 60/C_59.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "6bc27c7582b5a795c8348d215ce95827c81958de4ec9f88f80831b21ad02abb2"
+    },
+    {
+      "path": "site/public/images/teen/image 60/C_60.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0c034b65486330ba6323b17cf28699b1a693dd6512ca72b2042813561c611575"
+    },
+    {
+      "path": "site/public/images/teen/image 60/E_41.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "6ebd6f89e6015bb3110831f4e1bd012cfc7a533a98c616ab945937af324cd4f9"
+    },
+    {
+      "path": "site/public/images/teen/image 60/E_42.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "57a2b7ce39ec9aa3183247e2e0b0a9f479cb5dcf4cfc0877a8827a8dd554e6c0"
+    },
+    {
+      "path": "site/public/images/teen/image 60/E_43.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "d6aa0d0c3a1fd6a9b67c54d1ddfa628f1188219cedd099ce0a4c82bb25203067"
+    },
+    {
+      "path": "site/public/images/teen/image 60/E_44.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "29aa61e2eff9c4c27c3a81f8d00767a3bb88c2bef2e5573b5bba315e45f74a78"
+    },
+    {
+      "path": "site/public/images/teen/image 60/E_45.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "1878db39e3838aafb10841904cd8d1ffdd5c424d6b9e2058a7fec6ad19539c44"
+    },
+    {
+      "path": "site/public/images/teen/image 60/E_46.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a400eddeac6c1287449380e9c765a2e3cec2e03c59f1fed8c106b02094f3d7c9"
+    },
+    {
+      "path": "site/public/images/teen/image 60/E_47.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "de561dd62157fccdabe1ef1859c51a48b53be0828b7c196b90dd23ea53e1e34a"
+    },
+    {
+      "path": "site/public/images/teen/image 60/E_48.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2c0cfd2c5684c6e06124f54338a9f92cbb42cf75caa6efd58d475c84f9b073e7"
+    },
+    {
+      "path": "site/public/images/teen/image 60/E_49.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "fa4a9ac29d3b476111898520138600ae9ae11bfaba3c55d901a0e08712310195"
+    },
+    {
+      "path": "site/public/images/teen/image 60/E_50.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0963fb6efa3c57b723395375a0f5b59676d8329c9b15e04c2393494cd6982325"
+    },
+    {
+      "path": "site/public/images/teen/image 60/I_11.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "39ce952558b9bfb653f88ba38c12a84906c372ea28b34965be65b4cc5f45dacb"
+    },
+    {
+      "path": "site/public/images/teen/image 60/I_12.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "676c5d0dfe0672faf7ab16d9388e43279b527c02dbf16963b5f5560d73d340a0"
+    },
+    {
+      "path": "site/public/images/teen/image 60/I_13.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0f899d3989d479464bb38983321f76b35767669c7c75a95225ac1715c041bcf3"
+    },
+    {
+      "path": "site/public/images/teen/image 60/I_14.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4f3858d932038578e491d69292571f408240fa1f68b1ea22405e5428652693e6"
+    },
+    {
+      "path": "site/public/images/teen/image 60/I_15.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "24cee714888c8da3e81fffe6f79b735b6b438d2f98a74d311e750e0f2800ddfc"
+    },
+    {
+      "path": "site/public/images/teen/image 60/I_16.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ee983d32aef60a26fb3d9817c74eaa5ddf064597a48f04328ec8ddcd6c277076"
+    },
+    {
+      "path": "site/public/images/teen/image 60/I_17.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2aa1664e1b00ca0eea1eb8744707d31224eab23a40385895c27f0a644f3c28e3"
+    },
+    {
+      "path": "site/public/images/teen/image 60/I_18.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "1254129b1038ea6d24eab4e38b6b49857e1482608f020566e21f4c3824884d85"
+    },
+    {
+      "path": "site/public/images/teen/image 60/I_19.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "52818c2002bec0da348afde2190cec23026db07d2f8a247a751b0d047e1caae1"
+    },
+    {
+      "path": "site/public/images/teen/image 60/I_20.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "6113830d07be24ecdcb0720a0cb5cfccc77541d7ab3bdac616ddcf75fa85e67e"
+    },
+    {
+      "path": "site/public/images/teen/image 60/R_1.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a810d670772335de9fc591573db7781d922c66c9d2a9f11e9c97c70d5a3fda72"
+    },
+    {
+      "path": "site/public/images/teen/image 60/R_10.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "7c09c2b2ca0b478a193def1e6b2c564cfca479bdd9b72fabdc679d6cba0135d7"
+    },
+    {
+      "path": "site/public/images/teen/image 60/R_2.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "3baf6172e112ab10715df76013c462c44e7b2b0b6180a83bcc33b6e4b686b115"
+    },
+    {
+      "path": "site/public/images/teen/image 60/R_3.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "42dff3c599f5a8184a6750f5a1359dcf4379b91bffdb4dbdd53c6f593f7820e6"
+    },
+    {
+      "path": "site/public/images/teen/image 60/R_4.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "be58771a2231b80c20076a4b714074e0730f141541bd46fc7590030ce7bceebd"
+    },
+    {
+      "path": "site/public/images/teen/image 60/R_5.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "95925ce405ba74ca3e77e629ca9c4187c7218108013397887c2b2303c77a9d6b"
+    },
+    {
+      "path": "site/public/images/teen/image 60/R_6.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ed1a2a1daebbda24372e551f9b2b0279086f589b4c0d5a48764abfa6ece64c38"
+    },
+    {
+      "path": "site/public/images/teen/image 60/R_7.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "765730230a2de2453335051a8c7828730607facd04c2d0bab07dfbfad5b7a968"
+    },
+    {
+      "path": "site/public/images/teen/image 60/R_8.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "37df046531f05a7c17ac1b16e99ace318a1ba3ef6db45de3a59eb79fc4750630"
+    },
+    {
+      "path": "site/public/images/teen/image 60/R_9.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "58a3910166b6e61fa2f3a4e14c770bdbc6ff19f7ef6409116a3be4a527249998"
+    },
+    {
+      "path": "site/public/images/teen/image 60/S_31.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "6c774e10c34d5d8ebd31c336a304dd706d60f303094e47b29a5cb0de50317705"
+    },
+    {
+      "path": "site/public/images/teen/image 60/S_32.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "1b37d56fa9a0dc18e11f81de7a652fc886cfc3272461dd576c49a254c0505fcb"
+    },
+    {
+      "path": "site/public/images/teen/image 60/S_33.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f93dae94a9fd509c6507e0ec2a6011b8ff3e5b8ea3ea4cb307f9ca47db6fce4d"
+    },
+    {
+      "path": "site/public/images/teen/image 60/S_34.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "868a9c45e8a87288485bbad5a65722e3920bd9eae41689b3f1def967bd2aaa6e"
+    },
+    {
+      "path": "site/public/images/teen/image 60/S_35.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bcd5d1adef3898e0d72e931b0a03fe07d0c806592155f6445d658f2bd29bb0a0"
+    },
+    {
+      "path": "site/public/images/teen/image 60/S_36.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "d9e400264a1320c6d6ec3dfe09d3c7f14238874069fca2fb98a32cd26b6a224c"
+    },
+    {
+      "path": "site/public/images/teen/image 60/S_37.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "63979e69bd02565ee78de5658f5fadffc373703888f78d83d8d3958dd0e4a813"
+    },
+    {
+      "path": "site/public/images/teen/image 60/S_38.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bc18b182150c923b1513601c38691de59f8ce49454263395dbcb1afd4133b848"
+    },
+    {
+      "path": "site/public/images/teen/image 60/S_39.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "09e8c5aed4024a314527d545e2682bea68a87516d33c4380c366d24a0a9a019c"
+    },
+    {
+      "path": "site/public/images/teen/image 60/S_40.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "00305bf67ff621b6606605729aa796ccb457ee05acb0c503299b473d9c5d2e0e"
+    },
+    {
+      "path": "site/public/images/teen/image 64/E_1.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "9b16aaba3a7d9330a3041bf49389506ad918acb8cf1eb16a468b4af50ec7bf3e"
+    },
+    {
+      "path": "site/public/images/teen/image 64/E_2.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a6e5babfefe034a8c41eed2adc3db0210d73eea40710ffddac2c9f953ee27a9a"
+    },
+    {
+      "path": "site/public/images/teen/image 64/E_3.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2fb22eb803c599bb0482d666f2861d2ccabfac618191922734c97b900df4888f"
+    },
+    {
+      "path": "site/public/images/teen/image 64/E_4.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "e276cf4a8eb96f9eac1faaebdf4c8541819b84a1d74e44f9d886dbff201f4f15"
+    },
+    {
+      "path": "site/public/images/teen/image 64/E_5.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "dbcc4af4dfac2c8e427c508b7de0148dda7b0424c57f7c8db33ca1486cf7bcbf"
+    },
+    {
+      "path": "site/public/images/teen/image 64/E_6.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "87e9e95067b3d8874f365c35bad3eb636424ec869430adceef3905babd92a9a9"
+    },
+    {
+      "path": "site/public/images/teen/image 64/E_7.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bb59d531f122fd4703893564eb4b285b7f9cd715d080ea9fb569063f3e65fac7"
+    },
+    {
+      "path": "site/public/images/teen/image 64/E_8.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "cc6aa029bbfd620d94b7396c4d9a7b60914d84f8c94d1e330b8a41b82bb67ef8"
+    },
+    {
+      "path": "site/public/images/teen/image 64/F_1.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "729723cdaf45a429fe3913626b201cbbd06b5627fcdb32a2c12688bd668f2e41"
+    },
+    {
+      "path": "site/public/images/teen/image 64/F_2.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "5cdf98408b07439e530d64d05ccc0c15e85155e40874bb8c6dc2308e8d808b21"
+    },
+    {
+      "path": "site/public/images/teen/image 64/F_3.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "91acd7a1b1a4c05d5c8a943fe4ae77c12aa8c2a93ec57da75d2a62348063e801"
+    },
+    {
+      "path": "site/public/images/teen/image 64/F_4.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "6a678a1fb8a56b4be05a1024e585f9b87bb21427fdf772c30751a189049a96ff"
+    },
+    {
+      "path": "site/public/images/teen/image 64/F_5.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2bf67b0212560c320540b2cea8954c6c60cb9dfb702770bb40eb7ab51a4ece33"
+    },
+    {
+      "path": "site/public/images/teen/image 64/F_6.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bcfd8d76b7bd93852c5f470881a4e234aea8d2d105bbf255a823b455652df256"
+    },
+    {
+      "path": "site/public/images/teen/image 64/F_7.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "79eec829a7c0cadd646a15373ddfd0ab73adb42216f529cda1bb79c56087e731"
+    },
+    {
+      "path": "site/public/images/teen/image 64/F_8.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2f4d644b2680c48ffa9cd17ce9e1fbf39ad2f3d2f9e7cc08ef907b9e2ecb100f"
+    },
+    {
+      "path": "site/public/images/teen/image 64/I_1.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "64eecdac3f754dc4e47056344a84d6bdc2a3d311e70c00299f9b0401f0b552af"
+    },
+    {
+      "path": "site/public/images/teen/image 64/I_2.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "3f94078de60926bc522442f2ef3658e5f3ee32ca0cb12eb9eea541bcce20752b"
+    },
+    {
+      "path": "site/public/images/teen/image 64/I_3.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0d85cb616f83e4bc4f1453d595eb37b6cb273b6c2a84d2d2b30426140ff01a54"
+    },
+    {
+      "path": "site/public/images/teen/image 64/I_4.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a7857ca3d866f81b0a8707cfb417379750d3ff9db8c87d6fffcf6acaef5a547b"
+    },
+    {
+      "path": "site/public/images/teen/image 64/I_5.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "591a21f88c00b2f3a7180af820de2093b136359f37299500455a65ad075bace2"
+    },
+    {
+      "path": "site/public/images/teen/image 64/I_6.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "6065ec4958dcb4a766983840cef45e087c7b6439c7d1235aa4c42ca7117e2aa1"
+    },
+    {
+      "path": "site/public/images/teen/image 64/I_7.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "2c968f46f1ba9b894e65d2fde9b6ba6a1dd9a9f6d772a7ff141640c76cb08097"
+    },
+    {
+      "path": "site/public/images/teen/image 64/I_8.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "d1e8dbf70261755b13c38bb7d50cff43cc83b2dd629cb5b3211f45d018fb0f69"
+    },
+    {
+      "path": "site/public/images/teen/image 64/J_1.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "02fd3b5354e575a4c997340ab805ac6ad41f87701b0cfee8c1ce2046caabc7d1"
+    },
+    {
+      "path": "site/public/images/teen/image 64/J_2.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "309fe17a3c2108ac40ea6e956171a6f66523a2f9a7094449160b02887c08826c"
+    },
+    {
+      "path": "site/public/images/teen/image 64/J_3.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "1aa809097cedadb48776cb57788ba281b6834b81fa5dfcc7e130355009cfffb5"
+    },
+    {
+      "path": "site/public/images/teen/image 64/J_4.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "40adedd80cfb931ec5a71ad740942de3a53e2df9bd878a4896de039dba03c713"
+    },
+    {
+      "path": "site/public/images/teen/image 64/J_5.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "8091d2990c6c6c62899c4e8aece1212b886d493a76de84fa6756477baa21d14c"
+    },
+    {
+      "path": "site/public/images/teen/image 64/J_6.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a8aff1106c50fd96a692d96ccc8cb33fd582a6d4adecc2298d24e9cf62ea2d50"
+    },
+    {
+      "path": "site/public/images/teen/image 64/J_7.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4426a4fdc110e934008d11ddeb559588f2c1e22bbae6df53658c53f3cfddb65d"
+    },
+    {
+      "path": "site/public/images/teen/image 64/J_8.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "8f1800fdf87119565dc2e75cc4ed428d104ad9bd29803b0f4db385dd4e4d57aa"
+    },
+    {
+      "path": "site/public/images/teen/image 64/N_1.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "9b4c456c5cd4b8a0802082e966c965c402e2e212cd32c3cb17c02afeb83c898b"
+    },
+    {
+      "path": "site/public/images/teen/image 64/N_2.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a79d5d61c1e39ff17e0aa3b7034b6e31eb893fc331986ce4779bf46108978d35"
+    },
+    {
+      "path": "site/public/images/teen/image 64/N_3.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "fc530718b2369ad1a201d38b52f9724fb425681c4e384230ec04539527d449d6"
+    },
+    {
+      "path": "site/public/images/teen/image 64/N_4.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bb0a66204c6b5cc7a818155b1ef0d61d72892fdd55c1539720c788bd7cd08d52"
+    },
+    {
+      "path": "site/public/images/teen/image 64/N_5.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "d97ba4687a1e7c9a7b48421155d12bd86a6e993792c1f37cd1b27972472b46f4"
+    },
+    {
+      "path": "site/public/images/teen/image 64/N_6.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4338b6d62d970a617e261b71bb79327fd585b555d92d6ef748108773025955df"
+    },
+    {
+      "path": "site/public/images/teen/image 64/N_7.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ad5e13700122f018a6ec07aa7093196b5c1c7c80933393e4418cd16c415ae645"
+    },
+    {
+      "path": "site/public/images/teen/image 64/N_8.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "84864e026bcbef17ea999609e73328637dce48673c2098f4bbe7a41e05750833"
+    },
+    {
+      "path": "site/public/images/teen/image 64/P_1.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "4d5fdb8f5c54e0e8bd98e94d59c174455acd06b39f84150835081db5f535cfc2"
+    },
+    {
+      "path": "site/public/images/teen/image 64/P_2.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f1bee64f113b79be93ceb215a1b9e1889aca64a38c1ba52de1cd200b44935fed"
+    },
+    {
+      "path": "site/public/images/teen/image 64/P_3.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "f5a3aacede92f33009d4ea1eadbe964338c3437b598f5d03445f4603beaf3b9a"
+    },
+    {
+      "path": "site/public/images/teen/image 64/P_4.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "48465bf60cd866e7630a1661751275a5fbba06b3b37a603365b48663e9445117"
+    },
+    {
+      "path": "site/public/images/teen/image 64/P_5.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "b8800b4da822c4a09eab47b7cee41278eb099ed01d53e2e17ac13bafe9f02edb"
+    },
+    {
+      "path": "site/public/images/teen/image 64/P_6.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a9c6b0e6c0e92bca688171d75e38e9b3a6e4bf00087e9b72e9f91707af7432e4"
+    },
+    {
+      "path": "site/public/images/teen/image 64/P_7.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "c2032f8f1ab274e886d9c513113c4992e5fce875d623f1512a7469c772b85c67"
+    },
+    {
+      "path": "site/public/images/teen/image 64/P_8.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "577537a36a6896598499b7a073ae1f807a2246b5d232c0a0bb9fedc6df416c6f"
+    },
+    {
+      "path": "site/public/images/teen/image 64/S_1.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "18c3cd95216a2d99eabdc1039bb505832bc14d6df23c873c74c172be4ce63629"
+    },
+    {
+      "path": "site/public/images/teen/image 64/S_2.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "0f41681f826de25579915320ba2e98d01323a9b135091521af6ab35d27898af7"
+    },
+    {
+      "path": "site/public/images/teen/image 64/S_3.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "80ed6a355f6110f0ad3424e24b2eafb88b7ab615dac7c83e0220725da06868a8"
+    },
+    {
+      "path": "site/public/images/teen/image 64/S_4.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "25caa62dffcdd575e604c28d7f7d8ae6fb0fac8c5ec5a9477834d06f8fcd0cf9"
+    },
+    {
+      "path": "site/public/images/teen/image 64/S_5.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "50b73dd647339bfd124c567ae93077fff824db34c3012aeba2ed67940c16de97"
+    },
+    {
+      "path": "site/public/images/teen/image 64/S_6.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "3a4a874654aa226e6642e7b7825bea05a34bf47e445b4ea9dbf277f040c1c6cf"
+    },
+    {
+      "path": "site/public/images/teen/image 64/S_7.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "fabcfd38288be14c1772b49bc54f764301a111b27c9f83cbd31dbd2426f053e7"
+    },
+    {
+      "path": "site/public/images/teen/image 64/S_8.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a6e5603e659407845b39a4b73ad2a3391f2e2bd633a04eb7a6413ab5f1679cbe"
+    },
+    {
+      "path": "site/public/images/teen/image 64/T_1.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "654d96dbbb9396538fde0a5466c59af4ee6c110d6023f65ba7fc3e9d344524c0"
+    },
+    {
+      "path": "site/public/images/teen/image 64/T_2.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ecedace2ea4a71cf895a63f55535239878d08027282cdc769eb2acdb90c1a8da"
+    },
+    {
+      "path": "site/public/images/teen/image 64/T_3.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "bdf7a87e60f1cafa3f4c699380e8a352dbb077089d3a74222a5f6281f06a2bfd"
+    },
+    {
+      "path": "site/public/images/teen/image 64/T_4.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "9ef06ea4d24e8a16513571ebbd5605ef904e74a1fa2271a4cb0f08f1e4e36308"
+    },
+    {
+      "path": "site/public/images/teen/image 64/T_5.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "ccc64cdd85d35e9500d48f28474385c52add74c69206382409ceb7b2b4f3f26f"
+    },
+    {
+      "path": "site/public/images/teen/image 64/T_6.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "31d6deeb1ba27fee69130415a9fbdea06f981fa4262629f84df5e6a303a9028b"
+    },
+    {
+      "path": "site/public/images/teen/image 64/T_7.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "e2bf85737b4b3fee11abec3c03157a5e74f23b2b52b78419c18f474e85ca0fed"
+    },
+    {
+      "path": "site/public/images/teen/image 64/T_8.webp",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "e993d40958e40629fc53d922f9a9c88bc25a480af9bccf5ad80117d246cbde0a"
+    },
+    {
+      "path": "site/composer.lock",
+      "codes": [
+        "EMAIL_ADDRESS_IN_SOURCE"
+      ],
+      "sha256": "75b0737e6f8e211015fe9bef81fe70208399333fa54dd348514aa4dd6f0fe74f"
+    },
+    {
+      "path": "opt/dz-r27-universal/engine/assets/cover-illustration.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "a21ae5bb0a06e186193ddd67b7631dbe573b75bf1f832f081c2871e097016909"
+    },
+    {
+      "path": "opt/dz-r27-universal/engine/assets/logo-figma.png",
+      "codes": [
+        "ASSET_LICENSE_OR_PROVENANCE_REVIEW"
+      ],
+      "sha256": "799450959eff56ca3ac399d58f799babfb6c4797120c41b09b001ffb20cdce6a"
+    }
+  ]
+}

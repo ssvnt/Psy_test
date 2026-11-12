@@ -1,0 +1,272 @@
+{
+  "snapshot_manifest_sha256": "4d622009d79171729d36b849c1cf7f395f08af62e8e2219afa54b2778f02d142",
+  "github_base": "977803f44b669877149f031b29274e28009105d6",
+  "database": "SQLite :memory:",
+  "outbound_connections": "denied during PHPUnit",
+  "runs": {
+    "baseline": {
+      "tests": 1241,
+      "assertions": 84021,
+      "failures": 34,
+      "errors": 25,
+      "skipped": 5,
+      "warnings": 1
+    },
+    "candidate": {
+      "tests": 1241,
+      "assertions": 84021,
+      "failures": 34,
+      "errors": 25,
+      "skipped": 5,
+      "warnings": 1
+    },
+    "restored": {
+      "tests": 1241,
+      "assertions": 87133,
+      "failures": 33,
+      "errors": 5,
+      "skipped": 5,
+      "warnings": 1
+    },
+    "before_integration": {
+      "tests": 1241,
+      "assertions": 87681,
+      "failures": 14,
+      "errors": 1,
+      "skipped": 5,
+      "warnings": 1
+    },
+    "before_launcher_restore": {
+      "tests": 1243,
+      "assertions": 89139,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 5,
+      "warnings": 1
+    },
+    "launcher_restored": {
+      "tests": 1243,
+      "assertions": 89164,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5,
+      "warnings": 0
+    },
+    "final": {
+      "tests": 1243,
+      "assertions": 91594,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 3,
+      "warnings": 0
+    }
+  },
+  "final_open_cases": [
+    {
+      "class": "Tests\\Unit\\Children\\DrpeV2RealMaxGatePreparationTest",
+      "test": "test_manual_gate_is_explicit_sse_only_and_has_the_complete_artifact_contract",
+      "outcome": "skipped"
+    },
+    {
+      "class": "Tests\\Unit\\Children\\DrpeV2RealMaxGatePreparationTest",
+      "test": "test_function_canary_preparation_exits_before_provider_and_persists_full_resume_identity",
+      "outcome": "skipped"
+    },
+    {
+      "class": "Tests\\Unit\\Children\\DrpeV2RealMaxGatePreparationTest",
+      "test": "test_operator_reexecution_is_explicit_fail_closed_and_uses_the_k2_client_path",
+      "outcome": "skipped"
+    }
+  ],
+  "candidate_rebuild_files_compared": 1283,
+  "candidate_rebuild_byte_differences": 0,
+  "designer_examples": {
+    "source_package_sha256": "3b81e6568227f2029d00f4d5ed947947808e0f34f7dda7673744788f30813a0c",
+    "files": {
+      "public/examples/gardner-egor-v1/Egor-Report.html": "eed50c8988404da16fbf9fb3361e6171a3b69c1b440c86728b54485a06e658ce",
+      "public/examples/gardner-egor-v1/Egor-Report.pdf": "ae89385a7bc6290f921c4b7995916f01cceac15589580fc61b25205b40a2bc70",
+      "public/examples/teen-anna-v1/Anna-Report.html": "ec0f71da4f66efd44538e84362b9ac2886334fe76b5ee2185a5506700774cac2",
+      "public/examples/teen-anna-v1/Anna-Report.pdf": "c4581cc3bcb8c7895828cd864048c21b7499697dba087821e110b942925adc1f"
+    },
+    "browser": "Chromium 150 + Playwright, Laravel with Vite production assets, isolated SQLite",
+    "widths_css_px": [
+      390,
+      1440
+    ],
+    "products": [
+      "children",
+      "teen"
+    ],
+    "verified": [
+      "landing button to demo choice",
+      "free anchor scroll",
+      "full HTML and PDF, status and SHA-256",
+      "browser Back",
+      "landing lower link directly to full report",
+      "old children demo URLs",
+      "children registration",
+      "absence of horizontal overflow, broken same-origin requests, console page errors and writes"
+    ],
+    "egor_pdf_a4_pages": 8,
+    "private_rebuild_matching_files": 1282,
+    "phpunit": {
+      "tests": 1241,
+      "assertions": 87681,
+      "failures": 14,
+      "errors": 1,
+      "skipped": 5,
+      "warnings": 1
+    },
+    "open_cases_identical_to_previous_run": true
+  },
+  "before_integration_open_cases": [
+    {
+      "class": "Tests\\Unit\\Children\\DrpeV2RealMaxGatePreparationTest",
+      "test": "test_manual_gate_is_explicit_sse_only_and_has_the_complete_artifact_contract",
+      "outcome": "skipped"
+    },
+    {
+      "class": "Tests\\Unit\\Children\\DrpeV2RealMaxGatePreparationTest",
+      "test": "test_function_canary_preparation_exits_before_provider_and_persists_full_resume_identity",
+      "outcome": "skipped"
+    },
+    {
+      "class": "Tests\\Unit\\Children\\DrpeV2RealMaxGatePreparationTest",
+      "test": "test_operator_reexecution_is_explicit_fail_closed_and_uses_the_k2_client_path",
+      "outcome": "skipped"
+    },
+    {
+      "class": "Tests\\Unit\\Children\\DrpeV2RealMaxGatePreparationTest",
+      "test": "test_private_operator_launcher_is_secretless_single_batch_and_watchdog_bounded",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Unit\\Children\\GardnerV22ProductionCoreTest",
+      "test": "test_real_stage210_sources_are_adapted_deterministically_without_test_fixture_dependency",
+      "outcome": "skipped"
+    },
+    {
+      "class": "Tests\\Unit\\Children\\GardnerV22ProductionCoreTest",
+      "test": "test_current_stage210_pipeline_rebuilds_the_accepted_real_deterministic_sources",
+      "outcome": "skipped"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerCommerceTest",
+      "test": "test_email_verified_before_order_price_and_server_confirmation_idempotence",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerCommerceTest",
+      "test": "test_booking_repeat_conflict_reschedule_cancel_and_consent",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerCommerceTest",
+      "test": "test_refund_revokes_booking_and_later_approved_cannot_restore_it",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerCommerceTest",
+      "test": "test_specialist_schedule_overlap_auth_and_report_consent",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerCommerceTest",
+      "test": "test_other_paid_buyer_cannot_take_booked_slot",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerCommerceTest",
+      "test": "test_full_admin_can_create_restricted_specialist_who_can_manage_own_schedule",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerCommerceTest",
+      "test": "test_entire_local_journey_uses_real_scoring_queue_renderer_and_blocks_draft_delivery",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerServerIntegrationTest",
+      "test": "test_untrusted_currency_product_and_fractional_amounts_never_grant_entitlement",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerServerIntegrationTest",
+      "test": "test_manual_review_binds_exact_content_valid_pdf_delivery_and_revocation",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerServerIntegrationTest",
+      "test": "test_operator_slots_consent_audit_meeting_and_unapproved_rebooking_policy",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerV22PaidFlowTest",
+      "test": "test_real_database_queue_is_idempotent_and_owns_five_different_native_reports_including_compressed",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerV22PaidFlowTest",
+      "test": "test_unknown_billing_has_no_automatic_retry_or_active_operator_override",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerV22PaidFlowTest",
+      "test": "test_truncation_with_valid_usage_is_accounted_but_never_accepted_or_rebilled",
+      "outcome": "failure"
+    },
+    {
+      "class": "Tests\\Feature\\GardnerV22PaidFlowTest",
+      "test": "test_actual_compressed_generation_normalizes_new_fields_and_reaudits_before_final_sha",
+      "outcome": "error"
+    }
+  ],
+  "isolated_postgresql": {
+    "version": "17.11",
+    "migrations_completed": 59,
+    "empty_database": true,
+    "smoke": "PASS",
+    "scenario": [
+      "first discounted order",
+      "repeated creation",
+      "missing currency with no contract rejected",
+      "explicit RUB confirmation",
+      "repeated verification",
+      "specialist slot publication",
+      "book and replay",
+      "cancellation and reavailability"
+    ],
+    "external_bank_calls": 0
+  },
+  "integration_scenario": {
+    "workflow": "registration, actual scoring, free result, order, fake bank confirmation, queue, generator via fake transport, admin review HTML/PDF, owner draft denial, consultation, buyer email and specialist MAX",
+    "draft_status": 423,
+    "synthetic_provider_calls": 31,
+    "synthetic_consultation_max_requests": 1,
+    "external_bank_model_mail_max_calls": 0,
+    "profiles_rendered": 5
+  },
+  "deployment": {
+    "production_published": false,
+    "full_staging_chain_verified": false,
+    "production_ssh": "network unreachable",
+    "release_decision": "NO-GO"
+  },
+  "historical_qa": {
+    "launcher": {
+      "sha256": "0989eebc61a3dda879700d98eac8cf7aac99b7c7f850677a1a96a8e150513610",
+      "assertions": 26,
+      "executed_by_powershell": false,
+      "matches_20261101_developer_copy": true
+    },
+    "stage210": {
+      "reference_archive_sha256": "e67756051e8422fc5acb4c79d4586251d6142cc9c5f128cc29eb0523fe4c3fc6",
+      "banks_archive_sha256": "9f1f4ff4d23e10dd3ffb7572d8014b08f7a09f2215d73dfce81453356423ee9b",
+      "reference_files": 7,
+      "bank_and_configuration_files": 13,
+      "tests_passed": 2,
+      "assertions": 2430,
+      "private_inputs_published": false
+    }
+  }
+}
