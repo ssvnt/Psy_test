@@ -11,6 +11,9 @@ import tempfile
 
 from prepare_qa import HERE, build, check_file, private_output
 
+sys.path.insert(0, str(HERE.parent / 'senior-audit-20261123'))
+from apply_review import apply as apply_review
+
 
 def assemble(sources, output):
     output = private_output(sources, output)
@@ -54,6 +57,7 @@ def assemble(sources, output):
             subprocess.run(["git", "apply", patch], cwd=site, check=True)
             for name, hashes in extra["patched_files"].items():
                 check_file(site / name, hashes["after"])
+            stats.update(apply_review(site))
             source.rename(output / "source")
         stats.update(rc1_changed=len(changes["base_files"]), rc1_added=len(changes["new_files"]),
                      restored_files=len(extra["additional_files"]), patched_files=len(extra["patched_files"]))

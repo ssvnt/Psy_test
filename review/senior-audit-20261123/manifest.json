@@ -1,0 +1,81 @@
+{
+  "schema": "dz-senior-review-20261123-v1",
+  "base_commit": "c1d415e5cbe62438f69dd840855d33b209131ebd",
+  "patched_files": {
+    "app/Http/Controllers/Api/GardnerCommerceController.php": {
+      "before": "b85e500b99388a77c16bd7eb35440095593e8811cac8a2418488c889db7778e1",
+      "after": "a84f999ba7647b41def56161d3e3873a2dbb148697d9ab4fec6340fe5c73388d"
+    },
+    "app/Services/GardnerCommerce/Outbox.php": {
+      "before": "d8f0cfd04b74b11ba5dd6aa89148867fe47517f8a81fb16856a1eef0463b1791",
+      "after": "f1614367831fc1e56ae7d17113e39fa30e72856b888baa046196218065618a59"
+    },
+    "app/Services/TeenApprovedReports.php": {
+      "before": "6768c9fb8f16280312dcb3839e42b89c5a3f17dbed673a46b2a0d53981fa911d",
+      "after": "9340d533096b58979d41a5382e1be63a1a9278bf4c9c9794eb6457f764cc0454"
+    },
+    "resources/js/components/admin/GigaChatReport.vue": {
+      "before": "e5f377eda7cc4ba17d1d5a2ba026ab0f4f3380d0e7aebcb163baf4914967d72c",
+      "after": "4fe582f555c17071c52539af2371d864e3c702de925bbe1b7e39125655cc1376"
+    },
+    "resources/js/router.js": {
+      "before": "4e707dfa0ca8800d87e8fc89f4d37c4b4765ad790ac9ea71fcc551ec699222f2",
+      "after": "04a96b1095f771d6755b39cf4287a299d38dd5aeadce131906c3f3caa3845d20"
+    },
+    "resources/js/views/GardnerAccountPage.vue": {
+      "before": "f9231be23884c7df1eb33473771d3e0bdf54b804bc40959161d79ca1d94b495f",
+      "after": "63cfb79fecdaad12555440b7db2d04a3ee508787aa1c7a81634d9a3a94a87478"
+    },
+    "resources/js/views/TeenPaymentSuccessPage.vue": {
+      "before": "064513411adfdf5fb3d81cfb28d18970bc665cd00620b72febf118ed22cbd77b",
+      "after": "ad384826addd4f3dbd4629bdeca0cd20edec1c8621a628cfb6890af536071657"
+    },
+    "resources/views/emails/gardner-commerce-text.blade.php": {
+      "before": "d3909921507675f6619438a1077eaef1e25c2ac10a4a409b0c9a72e3f9b92db3",
+      "after": "e70393d8be4e71ae456efbf266adef4cef6996c2964c3ae4314c9e7f10b36cef"
+    },
+    "resources/views/emails/gardner-commerce.blade.php": {
+      "before": "a189d3d09049ec8c6ee462528b75a27c6c1d7403ffdfc85cbaffa3c631b5bd80",
+      "after": "e3ac00fc8423689186428a1d03b575dc2fe930e0e3c368fa725818738bc52516"
+    },
+    "routes/web.php": {
+      "before": "a71284b4d22b6f89e055dccee0b5ea365080f91e16c6ae4c41264b4ba0dbbee8",
+      "after": "300bf6555133bfee27e22b97f90ba126b240b52f0ad4af4ac05e866d1a9ce8ed"
+    }
+  },
+  "additional_files": {
+    "resources/js/views/NotFoundPage.vue": {
+      "source": "review/senior-audit-20261123/overlay/resources/js/views/NotFoundPage.vue",
+      "sha256": "599c37fe333aa82c88e8990cc7fb9415f864bf7f61f89d5700e14497595297c0"
+    },
+    "resources/js/components/admin/ReportSection.vue": {
+      "source": "review/senior-audit-20261123/overlay/resources/js/components/admin/ReportSection.vue",
+      "sha256": "5b56f9bf924589ad2882449d7b5d412b32907123052682a3733494b78e70bc41"
+    },
+    "tests/Feature/SeniorReleaseRegressionTest.php": {
+      "source": "review/senior-audit-20261123/tests/SeniorReleaseRegressionTest.php",
+      "sha256": "e6a2d03aa7eed5afa608a796919db078d0b0dd594084d64a0d56b1cdbbfd5429"
+    },
+    "tests/Feature/PasswordlessReadyMailTest.php": {
+      "source": "review/senior-audit-20261123/tests/PasswordlessReadyMailTest.php",
+      "sha256": "c6e798aa895c0056c16f382d3b9818c63ac960551d5c1e735fc24d9604a11aaf"
+    },
+    "app/Services/GardnerCommerce/ReadyMailAccess.php": {
+      "source": "review/server-baseline-rc5-20261110/customer-links/ReadyMailAccess.php",
+      "sha256": "d002c69989f48e89c24dbd4beaf2b8a0b3eae79c9d764973b38013c4bf220cad"
+    },
+    "app/Http/Controllers/ReadyMailController.php": {
+      "source": "review/server-baseline-rc5-20261110/customer-links/ReadyMailController.php",
+      "sha256": "9a4a9e4211de142f233478216c7aeb839a2610cb3215efb4652852d4655a66c5"
+    },
+    "routes/gardner_customer_mail.php": {
+      "source": "review/server-baseline-rc5-20261110/customer-links/routes.php",
+      "sha256": "b327338e092eafc888fcf281a5035f9d4e8384589d4dbfc7c8f60bb368b85532"
+    },
+    "resources/views/gardner-mail-booking.blade.php": {
+      "source": "review/server-baseline-rc5-20261110/customer-links/booking.blade.php",
+      "sha256": "efb3b95ace6cc5056ca9ab96bbb5f370c68dcc7a7593ed68c68d456813e0f6f8"
+    }
+  },
+  "patch_sha256": "8a10260839e2d18083e74f8d77cb6057e96a895d5cb8f8284839635039f7a796"
+}

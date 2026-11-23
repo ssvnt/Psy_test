@@ -10,7 +10,7 @@ use RuntimeException;
 
 final class ReadyMailAccess
 {
-    public function buyer(TestSession $s): array
+    private function paidOrder(TestSession $s): array
     {
         if ($s->test_type !== 'children' || !config('gardner_commerce.enabled') || !app(Orders::class)->paid($s)) {
             throw new RuntimeException('PAID_CHILD_ORDER_UNCONFIRMED');
@@ -22,11 +22,18 @@ final class ReadyMailAccess
         }
         $order = DB::table('gardner_orders')->where('test_session_id', $s->id)->where('buyer_id', $buyer->id)
             ->where('status', 'paid')->where('operation_id', $s->payment_id)->first();
+        if (!$order) throw new RuntimeException('ORIGINAL_MAIL_OR_ORDER_NOT_BOUND');
+        return [$email, $order->id];
+    }
+
+    public function buyer(TestSession $s): array
+    {
+        [$email, $order] = $this->paidOrder($s);
         $event = DB::table('gardner_mail_outbox')->where('test_session_id', $s->id)->where('kind', 'report_ready')
             ->where('status', 'sent')->whereNotNull('sent_at')->whereRaw('lower(trim(recipient)) = ?', [$email])
             ->orderByDesc('id')->first();
-        if (!$order || !$event) throw new RuntimeException('ORIGINAL_MAIL_OR_ORDER_NOT_BOUND');
-        return [$email, $order->id, $event->id];
+        if (!$event) throw new RuntimeException('ORIGINAL_MAIL_OR_ORDER_NOT_BOUND');
+        return [$email, $order, $event->id];
     }
 
     private function native(TestSession $s): array
@@ -66,9 +73,10 @@ final class ReadyMailAccess
         $qaBytes = $this->bytes($owner, 'qa.json');
         $qa = json_decode($qaBytes, true, flags: JSON_THROW_ON_ERROR);
         $qaHash = hash('sha256', $qaBytes);
-        if ($qaHash !== ($review['qa_sha256'] ?? null) || !is_int($qa['blocked'] ?? null) || $qa['blocked'] < 0
-            || $qa['blocked'] !== ($review['blocked'] ?? null) || ($qa['blocked'] > 0 &&
-                (($decision['ack_qa_warnings'] ?? null) !== true || ($decision['qa_sha256'] ?? null) !== $qaHash))) {
+        // Same publication gate as the main R27 route: an old acknowledgement
+        // cannot turn blocking QA findings into a releasable customer report.
+        if ($qaHash !== ($review['qa_sha256'] ?? null) || ($qa['blocked'] ?? null) !== 0
+            || $qa['blocked'] !== ($review['blocked'] ?? null)) {
             throw new RuntimeException('R27_QA_DECISION_UNCONFIRMED');
         }
         $token = trim($this->bytes($cust, 'token.secret'));
@@ -89,7 +97,33 @@ final class ReadyMailAccess
 
     public function release(TestSession $s, string $source): array
     {
-        [$email, $order, $event] = $this->buyer($s);
+        // Preserve the exact binding of corrective links already sent to customers.
+        return $this->releaseBound($s, $source, $this->buyer($s));
+    }
+
+    public function releaseForDelivery(TestSession $s, string $source): array
+    {
+        [$email, $order] = $this->paidOrder($s);
+        // First delivery cannot depend on a previously sent email. Payment,
+        // registration, approval and immutable file hashes remain mandatory.
+        return $this->releaseBound($s, $source, [$email, $order, 'published-mail-v2']);
+    }
+
+    public function linksForDelivery(TestSession $s): array
+    {
+        $release = $this->releaseForDelivery($s, 'native');
+        $params = ['session' => $s->public_id, 'source' => 'native', 'delivery' => '2', 'version' => $release['binding']];
+        $links = [];
+        foreach (['html' => 'report', 'pdf' => 'pdf', 'booking' => 'booking'] as $key => $action) {
+            $links[$key] = \Illuminate\Support\Facades\URL::temporarySignedRoute(
+                'gardner.customer.ready-mail', now()->addYear(), $params + ['action' => $action]);
+        }
+        return $links;
+    }
+
+    private function releaseBound(TestSession $s, string $source, array $buyer): array
+    {
+        [$email, $order, $event] = $buyer;
         [$html, $pdf] = match ($source) {
             'native' => $this->native($s),
             'r27' => $this->r27($s),
