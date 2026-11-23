@@ -42,7 +42,8 @@ final class LaravelJourneyHooks
         $this->assertProduct($session,$product);
         if(config('dz_mail_journeys.enabled')!==true)return 'FEATURE_DISABLED';
         if($session->payment_status!=='paid' || $amountKopecks<1 || $amountKopecks>1000000000
-            || !preg_match('/\A[a-f0-9]{64}\z/D',$proofSha256) || trim($operationId)==='') {
+            || !preg_match('/\A[a-f0-9]{64}\z/D',$proofSha256) || trim($operationId)===''
+            || !is_string($session->payment_id) || !hash_equals($session->payment_id,$operationId)) {
             throw new \InvalidArgumentException('VERIFIED_PAYMENT_PROOF_INVALID');
         }
         if($product==='gardner' && !app(\App\Services\GardnerCommerce\Orders::class)->paid($session)) {

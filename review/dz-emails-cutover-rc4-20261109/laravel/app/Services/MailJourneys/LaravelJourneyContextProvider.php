@@ -45,6 +45,8 @@ final class LaravelJourneyContextProvider implements JourneyContextProvider
             // a verified receipt inserted ONLY by the existing bank-confirmation callback.
             $bankVerified=$receipt!==null && hash_equals((string)($receipt->email_sha256??''),hash('sha256',$email))
                 && $s->payment_status==='paid'
+                && is_string($s->payment_id) && trim($s->payment_id)!==''
+                && hash_equals((string)$receipt->payment_operation_hash,hash('sha256',$s->payment_id))
                 && $receipt->currency==='RUB' && (int)$receipt->amount_kopecks>0
                 && is_string($receipt->verification_proof_sha256)
                 && preg_match('/\A[a-f0-9]{64}\z/D',$receipt->verification_proof_sha256)===1;
@@ -108,6 +110,10 @@ final class LaravelJourneyContextProvider implements JourneyContextProvider
                     && is_string($review->artifact_sha256??null)
                     && hash_equals((string)$review->artifact_sha256,(string)($snapshot['artifact_sha256']??''));
                 $shaHtml=$shaPdf=$approved && $qa;
+                if ($shaHtml) {
+                    $links=app(\App\Services\GardnerCommerce\ReadyMailAccess::class)->linksForDelivery($s);
+                    $urls['report_url']=$links['html'];$urls['consultation_url']=$links['booking'];
+                }
                 $version=$review?->artifact_sha256??null;
             }catch(\Throwable){$ready=false;}
         }

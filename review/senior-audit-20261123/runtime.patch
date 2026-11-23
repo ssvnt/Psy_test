@@ -1,0 +1,307 @@
+diff --git a/app/Http/Controllers/Api/GardnerCommerceController.php b/app/Http/Controllers/Api/GardnerCommerceController.php
+--- a/app/Http/Controllers/Api/GardnerCommerceController.php
++++ b/app/Http/Controllers/Api/GardnerCommerceController.php
+@@ -210,8 +210,11 @@
+                 $request->attributes->get('admin')->id, $slot->id, $row->version, ['meeting_sha256' => hash('sha256', $data['meeting_url'])]);
+             $session = TestSession::findOrFail($row->test_session_id);
+             $buyer = DB::table('gardner_buyers')->where('test_session_id', $session->id)->first();
++            $recipient = $session->test_type === 'teen' ? $session->email : $buyer?->email;
++            abort_unless(is_string($recipient) && filter_var($recipient, FILTER_VALIDATE_EMAIL), 409,
++                'Адрес получателя требует проверки.');
+             app(\App\Services\GardnerCommerce\Outbox::class)->add($session, 'booking:'.$row->version.':meeting:'.hash('sha256', $data['meeting_url']),
+-                'consultation_meeting_link', $buyer->email, ['version' => $row->version, 'meeting_sha256' => hash('sha256', $data['meeting_url'])]);
++                'consultation_meeting_link', $recipient, ['version' => $row->version, 'meeting_sha256' => hash('sha256', $data['meeting_url'])]);
+             return ['ok'=>true];
+         });
+     }
+diff --git a/app/Services/GardnerCommerce/Outbox.php b/app/Services/GardnerCommerce/Outbox.php
+--- a/app/Services/GardnerCommerce/Outbox.php
++++ b/app/Services/GardnerCommerce/Outbox.php
+@@ -132,7 +132,15 @@
+             if ($allowed && str_starts_with($row->kind, 'consultation_')) {
+                 $booking = DB::table('gardner_consultations')->where('test_session_id', $session->id)->first();
+                 $allowed = $booking && $booking->version === $payload['version'];
+-                if ($allowed && $row->kind !== 'consultation_cancelled') $allowed = $booking->status === 'confirmed' && app(Orders::class)->paid($session);
++                if ($allowed && $session->test_type === 'teen') {
++                    $allowed = filter_var($session->email, FILTER_VALIDATE_EMAIL)
++                        && hash_equals(mb_strtolower(trim($session->email)), mb_strtolower(trim($row->recipient)));
++                }
++                if ($allowed && $row->kind !== 'consultation_cancelled') {
++                    $paid = $session->test_type === 'teen'
++                        ? $session->payment_status === 'paid' : app(Orders::class)->paid($session);
++                    $allowed = $booking->status === 'confirmed' && $paid;
++                }
+                 if ($allowed && $row->kind === 'consultation_meeting_link') {
+                     $url = DB::table('gardner_consultation_slots')->where('id', $booking->slot_id)->value('meeting_url');
+                     $allowed = is_string($url) && hash_equals($payload['meeting_sha256'], hash('sha256', $url));
+@@ -145,7 +153,14 @@
+         if (!$row) return;
+         [$event, $session, $payload] = $row;
+         try {
+-            $url = rtrim(config('app.url'), '/').(!empty($payload['specialist']) ? '/admin/consultations' : '/children/account/'.$session->public_id);
++            $accountPath = $session->test_type === 'teen' ? '/teen/payment/' : '/children/account/';
++            $url = rtrim(config('app.url'), '/').(!empty($payload['specialist']) ? '/admin/consultations' : $accountPath.$session->public_id);
++            if ($event->kind === 'report_ready') {
++                $links = app(ReadyMailAccess::class)->linksForDelivery($session);
++                $url = $links['html'];
++                $payload['booking_url'] = $links['booking'];
++                $payload['pdf_url'] = $links['pdf'];
++            }
+             $mail = $event->kind === 'free_offer'
+                 ? new \App\Mail\GardnerFreeOfferMail($url)
+                 : new GardnerCommerceMail($event->kind, $url, $payload);
+diff --git a/app/Services/TeenApprovedReports.php b/app/Services/TeenApprovedReports.php
+--- a/app/Services/TeenApprovedReports.php
++++ b/app/Services/TeenApprovedReports.php
+@@ -74,10 +74,10 @@
+             ->join('gardner_specialists as p', 'p.id', '=', 's.specialist_id')
+             ->where('s.published', true)->where('p.active', true)->where('s.starts_at', '>', now('UTC'))
+             ->whereNotExists(fn ($q) => $q->selectRaw('1')->from('gardner_consultations as b')->whereColumn('b.slot_id', 's.id'))
+-            ->orderBy('s.starts_at')->limit(100)->get(['s.id', 's.starts_at', 's.ends_at']);
++            ->orderBy('s.starts_at')->orderBy('s.id')->select(['s.id', 's.starts_at', 's.ends_at'])->lazy(200);
+         return $rows->filter(function ($r) {
+             return $this->ownerSchedule(CarbonImmutable::parse($r->starts_at, 'UTC'), CarbonImmutable::parse($r->ends_at, 'UTC'));
+-        })->map(function ($r) {
++        })->take(100)->map(function ($r) {
+             $when = CarbonImmutable::parse($r->starts_at, 'UTC')->setTimezone(self::OWNER_ZONE);
+             return [ 'id' => (int) $r->id, 'date_key' => $when->format('Y-m-d'),
+                 'date_label' => $when->format('d.m.Y'), 'time' => $when->format('H:i') ];
+diff --git a/resources/js/components/admin/GigaChatReport.vue b/resources/js/components/admin/GigaChatReport.vue
+--- a/resources/js/components/admin/GigaChatReport.vue
++++ b/resources/js/components/admin/GigaChatReport.vue
+@@ -368,36 +368,9 @@
+ 
+ <script setup lang="ts">
+ import { ref, computed } from 'vue';
+-
+-// ─── Вспомогательный sub-компонент секции ────────────────────────────────
+-const ReportSection = {
+-    name: 'ReportSection',
+-    props: {
+-        title: String,
+-        icon: String,
+-        color: { type: String, default: 'orange' },
+-        collapsed: { type: Boolean, default: false },
+-    },
+-    setup(props: any) {
+-        const open = ref(!props.collapsed);
+-        return { open };
+-    },
+-    template: `
+-        <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+-            <button class="w-full flex items-center justify-between px-6 py-4 text-sm font-bold text-slate-900 hover:bg-slate-50 transition-colors"
+-                    @click="open = !open">
+-                <span class="flex items-center gap-2">{{ icon }} {{ title }}</span>
+-                <svg class="h-4 w-4 text-slate-400 transition-transform" :class="{ 'rotate-180': open }"
+-                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
+-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+-                </svg>
+-            </button>
+-            <div v-if="open" class="px-6 pb-5 pt-1 border-t border-slate-100">
+-                <slot />
+-            </div>
+-        </div>
+-    `,
+-};
++import DOMPurify from 'dompurify';
++
++import ReportSection from './ReportSection.vue';
+ 
+ // ─── Props ────────────────────────────────────────────────────────────────
+ const props = defineProps<{
+@@ -565,7 +538,8 @@
+ 
+ // ─── Report data accessor ─────────────────────────────────────────────────
+ function rd(key: string): string {
+-    return props.reportData?.[key] ?? '';
++    const html = props.reportData?.[key];
++    return DOMPurify.sanitize(typeof html === 'string' ? html : '', { USE_PROFILES: { html: true } });
+ }
+ 
+ // ─── Accordion state ──────────────────────────────────────────────────────
+diff --git a/resources/js/router.js b/resources/js/router.js
+--- a/resources/js/router.js
++++ b/resources/js/router.js
+@@ -232,6 +232,12 @@
+         props: true,
+         meta: { layout: 'admin', title: 'Редактирование статьи' },
+     },
++    {
++        path: '/:pathMatch(.*)*',
++        name: 'not-found',
++        component: () => import('./views/NotFoundPage.vue'),
++        meta: { title: 'Страница не найдена' },
++    },
+ ];
+ 
+ export const router = createRouter({
+diff --git a/resources/js/views/GardnerAccountPage.vue b/resources/js/views/GardnerAccountPage.vue
+--- a/resources/js/views/GardnerAccountPage.vue
++++ b/resources/js/views/GardnerAccountPage.vue
+@@ -75,16 +75,17 @@
+ // Never create a new order on a return URL or assume a bank redirect is payment.
+ let returnCheckTimer = null;
+ let returnCheckAttempts = 0;
++let disposed = false;
+ async function pollReturnStatus() {
+-    if (route.name !== 'children.payment-success' || !state.value || state.value.paid || state.value.order_status !== 'pending') return;
+-    try { await axios.post(`${base}/check`, {}, {headers:headers()}); await load(); }
++    if (disposed || route.name !== 'children.payment-success' || !state.value || state.value.paid || state.value.order_status !== 'pending') return;
++    try { await axios.post(`${base}/check`, {}, {headers:headers()}); if (disposed) return; await load(); }
+     catch { notice.value = 'Проверяем поступление оплаты. Повторно платить не нужно.'; }
+-    if (state.value && !state.value.paid && state.value.order_status === 'pending' && ++returnCheckAttempts < 5) {
++    if (!disposed && state.value && !state.value.paid && state.value.order_status === 'pending' && ++returnCheckAttempts < 5) {
+         returnCheckTimer = setTimeout(pollReturnStatus, 8000);
+     }
+ }
+ onMounted(() => action(async () => { await load(); await pollReturnStatus(); }));
+-onUnmounted(() => { if (returnCheckTimer) clearTimeout(returnCheckTimer); });
++onUnmounted(() => { disposed = true; if (returnCheckTimer) clearTimeout(returnCheckTimer); });
+ </script>
+ 
+ <template>
+diff --git a/resources/js/views/TeenPaymentSuccessPage.vue b/resources/js/views/TeenPaymentSuccessPage.vue
+--- a/resources/js/views/TeenPaymentSuccessPage.vue
++++ b/resources/js/views/TeenPaymentSuccessPage.vue
+@@ -41,6 +41,9 @@
+ const bookingSubmitting = ref(false);
+ const menuOpen = ref(false);
+ let timer = null;
++let disposed = false;
++let refreshing = false;
++const statusAbort = new AbortController();
+ 
+ const isPaid = computed(() => state.value?.paid === true);
+ const isReady = computed(() => state.value?.report_ready === true);
+@@ -48,19 +51,24 @@
+ const headers = computed(() => ({ 'X-Session-Phone': phone.value }));
+ 
+ async function refresh({ checkBank = false } = {}) {
++    if (disposed || refreshing) return;
+     if (!id.value) { loading.value = false; error.value = 'Номер тестирования не найден. Откройте свой бесплатный результат и выберите «Проверить заказ».'; return; }
+     if (!phone.value) { loading.value = false; return; }
++    refreshing = true;
+     error.value = '';
+     try {
+         // Read trusted Laravel state first. Payment created in the bank's
+         // own separate page without operationId cannot be matched here.
+-        let { data } = await axios.get(`/api/teen-payment/${encodeURIComponent(id.value)}/status`, { headers: headers.value });
++        let { data } = await axios.get(`/api/teen-payment/${encodeURIComponent(id.value)}/status`, { headers: headers.value, signal: statusAbort.signal });
++        if (disposed) return;
+         if (checkBank && !data.paid && data.has_payment_operation) {
+             try {
+-                await axios.post(`/api/test/${encodeURIComponent(id.value)}/check-payment`, {}, { headers: headers.value });
+-                ({ data } = await axios.get(`/api/teen-payment/${encodeURIComponent(id.value)}/status`, { headers: headers.value }));
++                await axios.post(`/api/test/${encodeURIComponent(id.value)}/check-payment`, {}, { headers: headers.value, signal: statusAbort.signal });
++                if (disposed) return;
++                ({ data } = await axios.get(`/api/teen-payment/${encodeURIComponent(id.value)}/status`, { headers: headers.value, signal: statusAbort.signal }));
+             } catch { /* Keep the page pending, never claim success on a redirect. */ }
+         }
++        if (disposed) return;
+         const wasPaid = state.value?.paid === true;
+         state.value = data;
+         channel.value = maxRequested.value ? 'max' : (data.notification_channel === 'max' ? 'max' : 'email');
+@@ -70,10 +78,11 @@
+         }
+         if (!wasPaid && data.paid) notificationMessage.value = 'Банк подтвердил оплату. Спасибо за доверие!';
+     } catch (e) {
++        if (disposed || axios.isCancel(e)) return;
+         if (e.response?.status === 403) { phone.value = ''; error.value = 'Подтвердите номер телефона из регистрации.'; }
+         else if (e.response?.status === 404) error.value = 'Сессия не найдена.';
+         else error.value = 'Не удалось проверить заказ. Повторите попытку.';
+-    } finally { loading.value = false; verifying.value = false; }
++    } finally { refreshing = false; loading.value = false; verifying.value = false; }
+ }
+ 
+ async function confirmPhone() {
+@@ -146,10 +155,13 @@
+ function onFocus() { if (phone.value) refresh({ checkBank: true }); }
+ onMounted(async () => {
+     await refresh({ checkBank: true });
++    if (disposed) return;
+     timer = window.setInterval(() => { if (phone.value) refresh({ checkBank: true }); }, 25000);
+     window.addEventListener('focus', onFocus);
+ });
+ onUnmounted(() => {
++    disposed = true;
++    statusAbort.abort();
+     if (timer) window.clearInterval(timer);
+     window.removeEventListener('focus', onFocus);
+ });
+diff --git a/resources/views/emails/gardner-commerce-text.blade.php b/resources/views/emails/gardner-commerce-text.blade.php
+--- a/resources/views/emails/gardner-commerce-text.blade.php
++++ b/resources/views/emails/gardner-commerce-text.blade.php
+@@ -40,7 +40,7 @@
+ Уведомление по заказу на сайте «Добрый Жук».
+ @endif
+ 
+-Личный кабинет: {{ $accountUrl }}
++Открыть: {!! $accountUrl !!}
+ 
+ С заботой,
+ команда «Добрый Жук»
+@@ -49,5 +49,8 @@
+ 
+ {{-- DZ106_BOOKING_CTA --}}
+ @if($kind === 'report_ready')
+-Записаться на консультацию: {{ $accountUrl }}#consultation
++@if(!empty($details['pdf_url']))
++Скачать PDF: {!! $details['pdf_url'] !!}
+ @endif
++Записаться на консультацию: {!! $details['booking_url'] ?? $accountUrl.'#consultation' !!}
++@endif
+diff --git a/resources/views/emails/gardner-commerce.blade.php b/resources/views/emails/gardner-commerce.blade.php
+--- a/resources/views/emails/gardner-commerce.blade.php
++++ b/resources/views/emails/gardner-commerce.blade.php
+@@ -42,9 +42,9 @@
+ </div>
+ <p style="margin:0 0 12px">Консультация уже включена в заказ. Выбрать удобное время можно в личном кабинете.</p>
+ @elseif($isReady)
+-<p style="margin:0 0 16px">Мы закончили подготовку и проверку индивидуального отчёта по профилю интеллекта вашего ребёнка. Теперь его можно открыть в личном кабинете и скачать PDF.</p>
++<p style="margin:0 0 16px">Мы закончили подготовку и проверку индивидуального отчёта по профилю интеллекта вашего ребёнка. По персональным ссылкам ниже можно открыть отчёт и скачать PDF.</p>
+ <p style="margin:0 0 14px">В отчёте — разбор восьми направлений Гарднера, рекомендации по занятиям и кружкам, идеи домашних проб и подсказки для разговора с ребёнком.</p>
+-<p style="margin:0 0 16px">В стоимость заказа включена консультация. Выберите время в кабинете, когда будет удобно обсудить результаты.</p>
++<p style="margin:0 0 16px">В стоимость заказа включена консультация. Выберите удобное время по кнопке записи на консультацию.</p>
+ @elseif($isAccess)
+ <p style="margin:0 0 14px">Вы запросили восстановление доступа к оплаченному заказу. Для подтверждения используйте код и номер запроса:</p>
+ <p style="margin:0 0 10px;padding:16px;background:#f1f7ec;border-radius:12px;font-size:24px;font-weight:bold;letter-spacing:3px;color:#345b40">{{ $details['code'] ?? '' }}</p>
+@@ -76,8 +76,11 @@
+ @endif
+ <p style="margin:26px 0 14px"><a href="{{ $accountUrl }}" style="background:#4f754f;color:#ffffff;text-decoration:none;display:inline-block;padding:13px 23px;border-radius:28px;font-size:15px;font-weight:700">{{ $isAccess ? 'Открыть кабинет' : ($isReady ? 'Открыть готовый отчёт' : 'Перейти в личный кабинет') }}</a></p>
+ @if($isReady)
+-<p style="margin:0 0 16px"><a href="{{ $accountUrl }}#consultation" style="background:#f3e5d1;color:#345b40;text-decoration:none;display:inline-block;padding:13px 23px;border-radius:28px;border:1px solid #c5a473;font-size:15px;font-weight:700">Записаться на консультацию</a></p>
+-<p style="margin:0 0 14px;font-size:13px;color:#657563">Откроется личный кабинет с доступным расписанием. Выберите удобное время в разделе консультаций.</p>
++@if(!empty($details['pdf_url']))
++<p><a href="{{ $details['pdf_url'] }}" style="color:#345b40">Скачать PDF</a></p>
++@endif
++<p style="margin:0 0 16px"><a href="{{ $details['booking_url'] ?? $accountUrl.'#consultation' }}" style="background:#f3e5d1;color:#345b40;text-decoration:none;display:inline-block;padding:13px 23px;border-radius:28px;border:1px solid #c5a473;font-size:15px;font-weight:700">Записаться на консультацию</a></p>
++<p style="margin:0 0 14px;font-size:13px;color:#657563">Откроется расписание. Выберите удобное время для обсуждения отчёта.</p>
+ @endif
+ <p style="margin:0;font-size:12px;line-height:1.6;color:#7a8076;overflow-wrap:anywhere">Если кнопка не открывается, используйте адрес:<br><a href="{{ $accountUrl }}" style="color:#4f754f;text-decoration:underline;overflow-wrap:anywhere">{{ $accountUrl }}</a></p>
+ @if($isPaid)
+diff --git a/routes/web.php b/routes/web.php
+--- a/routes/web.php
++++ b/routes/web.php
+@@ -59,8 +59,20 @@
+ Route::post('/teen/report/{session}/consultation', [\App\Http\Controllers\TeenApprovedReportController::class, 'reserve'])
+     ->middleware(['signed', 'throttle:5,1']);
+ 
+-Route::view('/{any?}', 'app')
+-    ->where('any', '^(?!api/).*');
++require __DIR__.'/gardner_customer_mail.php';
++
++// Only known Vue entry points return a successful document. Keep the Vue
++// not-found component for client navigation and an actual 404 for direct URLs.
++Route::view('/{any?}', 'app')->where('any',
++    '(?:children(?:/(?:game|test|demo|(?:result|account|payment)/[^/]+))?'
++    .'|teen(?:/(?:game|test|demo|result/[^/]+|payment(?:/[^/]+)?))?'
++    .'|test|result/[^/]+|privacy|public_ofert|public-offer|consent-personal-data'
++    .'|consent-legal-representative|user-agreement'
++    .'|admin(?:/(?:login|consultations|gardner-reports/[^/]+|sessions/[^/]+/show|articles/(?:new|[^/]+/edit)))?)');
++Route::fallback(function (\Illuminate\Http\Request $request) {
++    if ($request->is('api', 'api/*')) abort(404);
++    return response()->view('app', [], 404);
++})->where('fallbackPlaceholder', '(?!api(?:/|$)).*');
+ 
+ 
+ 

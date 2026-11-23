@@ -69,8 +69,8 @@
     },
     {
       "path": "laravel/app/Services/MailJourneys/LaravelJourneyContextProvider.php",
-      "bytes": 10667,
-      "sha256": "69ca3da8daa50bba2c391e4c34c852d78abc9f5f50f7f54431e98fc5590a065c"
+      "bytes": 11102,
+      "sha256": "7113af32c6c9298b9e5d19e31866d30b103c3af03e74f07c4ae32c7e7046ed62"
     },
     {
       "path": "laravel/app/Services/MailJourneys/LaravelJourneyCoordinatorFactory.php",
@@ -84,8 +84,8 @@
     },
     {
       "path": "laravel/app/Services/MailJourneys/LaravelJourneyHooks.php",
-      "bytes": 6065,
-      "sha256": "cf927cc41bea138f945ed8c66acc6816aa5f552f2198480e40a8460768db9aa0"
+      "bytes": 6164,
+      "sha256": "fe9468c8327d3540bf52875a5b8fed02b4bde0361ef8c795be7a77f00bc881fc"
     },
     {
       "path": "laravel/app/Services/MailJourneys/LaravelJourneyMailer.php",

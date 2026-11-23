@@ -1,0 +1,11 @@
+PASS admin: production bundle renders report sections and rejects executable HTML
+PASS gardner: bank response after unmount cannot reschedule polling
+PASS unknown route: accessible 404 at mobile and desktop widths
+PASS teen: no polling/listener installed after unmount during initial request
+PASS teen: focus events cannot overlap an in-flight status request
+
+390 Гарднер landing → free → anchor → full → PDF; Back; landing → full: PASS
+390 Профориентация landing → free → anchor → full → PDF; Back; landing → full: PASS
+1440 Гарднер landing → free → anchor → full → PDF; Back; landing → full: PASS
+1440 Профориентация landing → free → anchor → full → PDF; Back; landing → full: PASS
+Legacy addresses, child registration, assets, HTTP methods and JS errors: PASS

@@ -17,7 +17,9 @@ final class ReadyMailController
         // Independently verify the exact issued route, including action, expiry and report version.
         abort_unless($request->hasValidSignature() && in_array($action, ['report','pdf','booking'], true), 403);
         try {
-            $release = $access->release($session, (string) $request->query('source'));
+            $release = $request->query('delivery') === '2'
+                ? $access->releaseForDelivery($session, (string) $request->query('source'))
+                : $access->release($session, (string) $request->query('source'));
         } catch (\Throwable) { abort(404); }
         abort_unless(hash_equals($release['binding'], (string) $request->query('version')), 403);
         $headers = ['Cache-Control'=>'private, no-store', 'X-Robots-Tag'=>'noindex, nofollow, noarchive',

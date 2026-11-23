@@ -1,0 +1,85 @@
+{
+  "base_commit": "c1d415e5cbe62438f69dd840855d33b209131ebd",
+  "date": "2026-11-23",
+  "environment": {
+    "php": "8.4.24",
+    "node": "24.22.3",
+    "phpunit": "11.5.55",
+    "database": "SQLite :memory:",
+    "network": "AF_INET/AF_INET6 blocked during PHPUnit",
+    "production_calls": 0
+  },
+  "red": {
+    "backend": {
+      "tests": 5,
+      "passed": 1,
+      "failed": 4,
+      "errors": 0,
+      "skipped": 0,
+      "assertions": 14
+    },
+    "mail_adapters": {
+      "tests": 3,
+      "passed": 0,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 0,
+      "assertions": 8
+    },
+    "first_ready_mail": {
+      "tests": 1,
+      "passed": 0,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "assertions": 14
+    }
+  },
+  "green": {
+    "full_phpunit": {
+      "tests": 1252,
+      "passed": 1249,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 3,
+      "assertions": 91675
+    },
+    "stage210": {
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "assertions": 2430
+    },
+    "rc4": {
+      "coordinator": 40,
+      "hard_cases": 24,
+      "source_contract": 1
+    }
+  },
+  "browser_regressions": 5,
+  "browser_widths": [
+    390,
+    1440
+  ],
+  "rebuild_matching_files": 18,
+  "github_actions_runs": 0,
+  "skipped_tests": [
+    {
+      "class": "Tests.Unit.Children.DrpeV2RealMaxGatePreparationTest",
+      "name": "test_manual_gate_is_explicit_sse_only_and_has_the_complete_artifact_contract",
+      "reason": ""
+    },
+    {
+      "class": "Tests.Unit.Children.DrpeV2RealMaxGatePreparationTest",
+      "name": "test_function_canary_preparation_exits_before_provider_and_persists_full_resume_identity",
+      "reason": ""
+    },
+    {
+      "class": "Tests.Unit.Children.DrpeV2RealMaxGatePreparationTest",
+      "name": "test_operator_reexecution_is_explicit_fail_closed_and_uses_the_k2_client_path",
+      "reason": ""
+    }
+  ]
+}
